@@ -175,9 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96b9737445de7f42a64b5bfea975ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slash: {fileID: 0}
-  range: 100
+  slash: {fileID: 1283639008912135204, guid: 0215692221319a844a9eee079015706f, type: 3}
+  range: 1
   size: 0
-  timePerAttack: 0
+  timePerAttack: 0.5
+  attackLifespan: 0.1
+  attackDamage: 5
   horizontalInput: 0
   verticalInput: 0
