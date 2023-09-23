@@ -28,7 +28,8 @@ public class PlayerSlash : MonoBehaviour
 
         if (horizontalInput != 0 && verticalInput != 0) {
             Vector3 playerPos = rb.transform.position;
-            Vector3 playerDirection = rb.transform.forward;
+            Vector3 playerDirection = rb.transform.right;
+            Debug.Log(playerDirection);
             Quaternion playerRotation = rb.transform.rotation;
 
             Vector3 spawnPos = playerPos + playerDirection*range;

@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 1283639008912135204, guid: 0215692221319a844a9eee079015706f, type: 3}
     - target: {fileID: 1479580162016820953, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5535555
@@ -412,7 +420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14d4160d781976c48b74ba29e28bf302, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 214c4589c7a755644a24d472b15f6cec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
