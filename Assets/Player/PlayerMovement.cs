@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("hello!");
+        
     }
 
 

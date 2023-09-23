@@ -20,17 +20,18 @@ public class EnemyBehavior : MonoBehaviour
         playerRB = player.GetComponent<Rigidbody2D>();
     }
 
-    private float countdown = 2f;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        countdown -= Time.deltaTime;
-        if (countdown < 0) {
-            Destroy(gameObject);
-        }
         Vector3 dir = (playerRB.position - rb.position).normalized;
         rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
+
+        //Vector3 displacement = player.transform.position -transform.position;
+        //displacement = displacement.normalized;
+        //if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
+        //    transform.position += (displacement * moveSpeed * Time.deltaTime);                        
+        //}
         Vector3 scale = transform.localScale;
         scale.x = -Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
         transform.localScale = scale;
@@ -38,14 +39,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
-
-        // transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-
-        Vector3 displacement = player.transform.position -transform.position;
-        displacement = displacement.normalized;
-        if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
-            transform.position += (displacement * moveSpeed * Time.deltaTime);                        
-        }
+        Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
+        
 
     }
 

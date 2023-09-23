@@ -10,11 +10,15 @@ public class GoldCollector : MonoBehaviour
     void Start()
     {
         part = GetComponent<ParticleSystem>();
+        
         collisionEvents = new List<ParticleCollisionEvent>();
     }
 
-    void OnParticleCollision(GameObject other)
+    void Update()
     {
-        
-    }
+        if (part.isStopped) {
+            Destroy(gameObject);
+        }
+     }
+
 }
