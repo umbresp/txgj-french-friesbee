@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-
     private Rigidbody2D rb;
     
     private float horizontalInput;
@@ -20,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+{
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -33,4 +32,11 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("hello!");
+    }
+
+
 }
