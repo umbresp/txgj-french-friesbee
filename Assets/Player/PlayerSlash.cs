@@ -9,11 +9,15 @@ public class PlayerSlash : MonoBehaviour
     public float range;
     public float size;
     public float timePerAttack;
+    public float attackLifespan;
+    public float attackDamage;
 
     private Rigidbody2D rb;
 
     public float horizontalInput;
     public float verticalInput;
+
+    private float timeUntilAttack = 0.0f;
 
     void Start()
     {
@@ -23,17 +27,24 @@ public class PlayerSlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        timeUntilAttack -= Time.deltaTime;
+        if (timeUntilAttack <= 0.0) {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (horizontalInput != 0 && verticalInput != 0) {
-            Vector3 playerPos = rb.transform.position;
-            Vector3 playerDirection = rb.transform.forward;
-            Quaternion playerRotation = rb.transform.rotation;
+            if (horizontalInput != 0 || verticalInput != 0) {
+                Vector3 playerPos = rb.transform.position;
+                Vector3 playerDirection = rb.transform.right;
+                Quaternion playerRotation = rb.transform.rotation;
 
-            Vector3 spawnPos = playerPos + playerDirection*range;
+                Vector3 spawnPos = playerPos + playerDirection*range;
 
-            Instantiate(slash, spawnPos, playerRotation);
+                GameObject slashAttack = Instantiate(slash, spawnPos, playerRotation);
+                slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
+                
+                timeUntilAttack = timePerAttack;
+            }
         }
+        
     }
 }

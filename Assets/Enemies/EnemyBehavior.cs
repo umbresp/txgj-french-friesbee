@@ -38,7 +38,15 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);   
+
+        // transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+
+        Vector3 displacement = player.transform.position -transform.position;
+        displacement = displacement.normalized;
+        if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
+            transform.position += (displacement * moveSpeed * Time.deltaTime);                        
+        }
+
     }
 
 }
