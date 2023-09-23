@@ -247,20 +247,10 @@ MonoBehaviour:
     - fawerawb
     - 'aenjvrakweuhbto aweitwa tbjiawe ail kba
 
-      eba
+      eba web rawe <color=red>BOLD
+      TEXT</color=red>
 
-      web
-
-      rawe
-
-      batjntablwetijoawlekbn
-      amba
-
-      weba
-
-      b
-
-      ba'
+      batjntablwetijoawlekbn amba webaba'
     - bbbre
     - vvea
 --- !u!114 &1274764523
@@ -483,6 +473,14 @@ PrefabInstance:
     - target: {fileID: 5402920695285105164, guid: c8063fb2441caca4fa8da2481a4b8b07, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004404341691548538, guid: c8063fb2441caca4fa8da2481a4b8b07, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d42925ac4ef7245428afcad05a6c744a, type: 2}
+    - target: {fileID: 9004404341691548538, guid: c8063fb2441caca4fa8da2481a4b8b07, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
