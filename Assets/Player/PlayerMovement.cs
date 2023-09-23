@@ -25,5 +25,12 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+ 
+        //Rotation for attack direction, not character sprites
+	    if (rb.velocity != Vector2.zero) 
+        {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 }
