@@ -19,13 +19,15 @@ public class SettingsManager : MonoBehaviour
 
     public GameObject bgm;
     private AudioSource[] audioSources;
+    private float vol;
 
     // Start is called before the first frame update
     void Start()
     {
+        vol = 0.5f;
         settingsPanel.localPosition = offScreen;
         audioSources = bgm.GetComponents<AudioSource>();
-        audioSources[0].volume = 1;
+        audioSources[0].volume = vol;
         audioSources[1].volume = 0;
     }
 
@@ -33,6 +35,12 @@ public class SettingsManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setVolume(float a)
+    {
+        vol = a / 2;
+        audioSources[1].volume = vol;
     }
 
     public void toggleGambleSetting() {
@@ -44,9 +52,8 @@ public class SettingsManager : MonoBehaviour
     }
 
     public void bringInSettings() {
-        float temp = audioSources[0].volume;
-        audioSources[0].volume = audioSources[1].volume;
-        audioSources[1].volume = temp;
+        audioSources[0].volume = 0;
+        audioSources[1].volume = vol;
         StopAllCoroutines();
         StartCoroutine(SettingsPanelEnters());
         setttingsArrive = true;
@@ -73,9 +80,8 @@ public class SettingsManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(SettingsPanelLeaves());
         setttingsArrive = false;
-        float temp = audioSources[0].volume;
-        audioSources[0].volume = audioSources[1].volume;
-        audioSources[1].volume = temp;
+        audioSources[1].volume = 0;
+        audioSources[0].volume = vol;
     }
 
     IEnumerator SettingsPanelLeaves()
