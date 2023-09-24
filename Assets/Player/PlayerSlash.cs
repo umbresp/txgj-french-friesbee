@@ -29,21 +29,23 @@ public class PlayerSlash : MonoBehaviour
     {
         timeUntilAttack -= Time.deltaTime;
         if (timeUntilAttack <= 0.0) {
-            horizontalInput = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxisRaw("Vertical");
+            Debug.Log("hi");
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 playerToMouseDirection = (mousePosition - transform.position);
 
-            if (horizontalInput != 0 || verticalInput != 0) {
-                Vector3 playerPos = rb.transform.position;
-                Vector3 playerDirection = rb.transform.right;
-                Quaternion playerRotation = rb.transform.rotation;
+            Vector3 playerPos = rb.transform.position;
+            Vector3 playerToMouseFlat = playerToMouseDirection;
+            playerToMouseFlat.z = 0;
+            Vector3 playerDirection = playerToMouseFlat.normalized;
+            Debug.Log(playerDirection);
+            Quaternion playerRotation = rb.transform.rotation;
 
-                Vector3 spawnPos = playerPos + playerDirection*range;
+            Vector3 spawnPos = playerPos + playerDirection*range;
 
-                GameObject slashAttack = Instantiate(slash, spawnPos, playerRotation);
-                slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
+            GameObject slashAttack = Instantiate(slash, spawnPos, playerRotation);
+            slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
                 
-                timeUntilAttack = timePerAttack;
-            }
+            timeUntilAttack = timePerAttack;
         }
         
     }

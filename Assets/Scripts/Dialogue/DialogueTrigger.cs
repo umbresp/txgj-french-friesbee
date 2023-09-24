@@ -11,6 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     void Start()
     {
         manager = FindObjectOfType<DialogueManager>();
+        TriggerDialogue();
     }
 
     // Update is called once per frame
