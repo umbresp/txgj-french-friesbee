@@ -12,6 +12,9 @@ public class PlayerSlash : MonoBehaviour
     public float attackLifespan;
     public float attackDamage;
 
+    [SerializeField] AudioClip[] sounds;
+    AudioSource swordAudioSource;
+
     private Rigidbody2D rb;
 
     public float horizontalInput;
@@ -22,6 +25,7 @@ public class PlayerSlash : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        swordAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,7 +49,7 @@ public class PlayerSlash : MonoBehaviour
 
             GameObject slashAttack = Instantiate(slash, spawnPos, attackRotation);
             slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
-                
+            swordSounds();
             timeUntilAttack = timePerAttack;
         }
     }
@@ -70,4 +74,9 @@ public class PlayerSlash : MonoBehaviour
         attackDamage *= 1.25f;
     }
 
+    void swordSounds()
+    {
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        swordAudioSource.PlayOneShot(clip);
+    }
 }
