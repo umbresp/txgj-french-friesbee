@@ -9,6 +9,9 @@ public class Room : MonoBehaviour
     public static int RoomNum = 0;
     public static Room MostRecentLoadedRoom;
     public static int numRoomsTillSlot;
+    public static List<Notes> notes;
+    public static HashSet<int> whichNotesChosen;
+    public static int numRoomsTillNote;
 
     public GameObject enemy;
     public GameObject slotMachine;
@@ -24,7 +27,9 @@ public class Room : MonoBehaviour
     {
         if (RoomNum == 0) {
             numRoomsTillSlot = Random.Range(3, 6);
+            numRoomsTillNote = numRoomsTillSlot;
             Setup(-1); //setup initial room
+            //SetupNotesList();
         }
     }
 
@@ -49,6 +54,16 @@ public class Room : MonoBehaviour
             door.Enter();
             numOpenRooms--;
         }
+
+        if (numRoomsTillNote <= 0) {
+            int random = Random.Range(0, notes.Count);
+            while (!whichNotesChosen.Add(random)) {
+                random = Random.Range(0, notes.Count);
+            }
+            Instantiate(notes[random], transform.position, Quaternion.identity, transform);
+            return;
+        }
+
 
         if (numRoomsTillSlot <= 0) {
             //no enemies
@@ -95,6 +110,11 @@ public class Room : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void SetupNotesList() {
+        whichNotesChosen = new HashSet<int>();
+        notes = new List<Notes>();
     }
 
     public void ActivateEm() { 

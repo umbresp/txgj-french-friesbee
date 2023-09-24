@@ -20,6 +20,7 @@ public class EnterNewRom : MonoBehaviour
         Transform parent = GetComponentInParent<Room>().transform;
         FollowRoom.Go(new Vector2(parent.position.x, parent.position.y));
         gameObject.SetActive(false);
+        Room.numRoomsTillNote--;
         Room.numRoomsTillSlot--;
     }
    
