@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    
+
     public GameObject gameController;
 
     [SerializeField] AudioClip[] sounds;
@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
         coinAudioSource.PlayOneShot(clip);
     }
 
-
+    public void receiveDamage(float damage) {
+        coinCounter.loseCoins(damage);
+    }
 
 }
