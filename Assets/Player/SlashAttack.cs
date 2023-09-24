@@ -45,6 +45,7 @@ public class SlashAttack : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
             Enemy enemy = other.GetComponent<Enemy>();
+            if (!enemy) { return; }
             enemy.TakeDamage(damage);
             other.attachedRigidbody.AddForce(transform.right * knockbackF);
             

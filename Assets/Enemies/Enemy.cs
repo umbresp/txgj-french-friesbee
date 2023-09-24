@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float damage = 5;
     //public GameObject gameManager;
     private SpriteRenderer enemySprite;
-    private float TimeSinceDamaged = 1;
+    private float timeSinceDamaged = 1;
     private EnemyBehavior myEnemy;
     private float owTime;
     private float owTimeMax = 0.3f;
@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        enemySprite.color = Color.Lerp(Color.red, Color.white, Mathf.Clamp(TimeSinceDamaged, 0, 1f));
-        if (TimeSinceDamaged < 2f) { TimeSinceDamaged += (Time.deltaTime * 2); };
+        enemySprite.color = Color.Lerp(Color.red, Color.white, Mathf.Clamp(timeSinceDamaged, 0, 1f));
+        if (timeSinceDamaged < 2f) { timeSinceDamaged += (Time.deltaTime * 2); };
         
         if (owTime > 0) { owTime -= Time.deltaTime; }
         myEnemy.ow = owTime > 0;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(float dmg) {
-        TimeSinceDamaged = 0;
+        timeSinceDamaged = 0;
         health -= dmg;
         owTime = owTimeMax;
         if (health <= 0) {

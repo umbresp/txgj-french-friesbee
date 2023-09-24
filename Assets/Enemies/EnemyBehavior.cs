@@ -40,9 +40,12 @@ public class EnemyBehavior : MonoBehaviour
         //if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
         //    transform.position += (displacement * moveSpeed * Time.deltaTime);                        
         //}
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
-        transform.localScale = scale;
+        if (Mathf.Sign(dir.x) == -1) {
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
+        } else {
+            transform.rotation = Quaternion.identity;
+        }
+     
     }
 
     private void OnDestroy()

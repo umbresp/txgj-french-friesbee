@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public float fireballSpeed = 1f;
+    public float fireballSpeed = 8f;
     public float damage = 2f;
     private Player player; //LOL
     private Rigidbody2D rb;
@@ -22,10 +22,10 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.velocity = transform.right * fireballSpeed;
+        //rb.velocity = transform.right * fireballSpeed;
     }
 
-    private void OnTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) { return; }
         if (collision.gameObject.CompareTag("Player")) {

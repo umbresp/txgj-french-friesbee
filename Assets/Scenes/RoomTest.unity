@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: knockbackVal
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1479580162016820953, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,6 +186,18 @@ PrefabInstance:
     - target: {fileID: 2746578163667647095, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -793,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
       propertyPath: enemy
       value: 
-      objectReference: {fileID: 5533458178463617841, guid: b54d2ee2d9da47440abf665788d5e9bb, type: 3}
+      objectReference: {fileID: 3877890433198435518, guid: d13df55157cb7e44d9fc29bd3ceecd0b, type: 3}
     - target: {fileID: 6524840163264437560, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
