@@ -11,14 +11,21 @@ public class GambleManager : MonoBehaviour
     private bool titleArrive = false;
     private bool ready = false;
 
+    [SerializeField] AudioClip[] sounds;
+    AudioSource gambleAudioSource;
+
     void Start()
     {
         Vector3 slotsPos = gambleScreen.localPosition;
         gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
+
+        gambleAudioSource = GetComponent<AudioSource>();
         bringInSlots();
 
         Vector3 titlePos = titleScreen.localPosition;
         titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
+
+        
     }
 
     // Update is called once per frame
@@ -29,7 +36,9 @@ public class GambleManager : MonoBehaviour
 
     public void bringInSlots() {
         StopAllCoroutines();
+        gambleSounds();
         StartCoroutine(GamblePanelEnters());
+        
     }
 
     IEnumerator GamblePanelEnters() {
@@ -67,5 +76,10 @@ public class GambleManager : MonoBehaviour
             yield return null;
         }
         ready = true;
+    }
+    void gambleSounds()
+    {
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        gambleAudioSource.PlayOneShot(clip);
     }
 }
