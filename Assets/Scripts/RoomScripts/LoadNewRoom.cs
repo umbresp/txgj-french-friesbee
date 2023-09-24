@@ -14,6 +14,7 @@ public class LoadNewRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) { return; }
         int side = _door.Side;
         Room currentRoom = GetComponentInParent<Room>();
         Vector2 currentPos = new Vector2(currentRoom.transform.position.x, currentRoom.transform.position.y);

@@ -13,11 +13,17 @@ public class EnterNewRom : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        
         _door.Enter();
         //move camera
+        PlayerMovement.move = false;
         Transform parent = GetComponentInParent<Room>().transform;
         FollowRoom.Go(new Vector2(parent.position.x, parent.position.y));
         gameObject.SetActive(false);
+        Debug.Log("Decremeneted");
+        Room.numRoomsTillSlot--;
     }
+   
+
 
 }
