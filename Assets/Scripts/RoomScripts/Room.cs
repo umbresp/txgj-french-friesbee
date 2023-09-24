@@ -97,8 +97,8 @@ public class Room : MonoBehaviour
         if (nono != -1) { //don't spawn enemies for starting floor
             if (RoomNum % 4 == 0) {
                 //increase the number of allowed enemies by 2?
-                minEnemies += 2;
-                maxEnemies += 4;
+                minEnemies += 1;
+                maxEnemies += 3;
             }
             numEnemies = Random.Range(minEnemies, maxEnemies);
             enemies = new List<GameObject>();
@@ -106,6 +106,12 @@ public class Room : MonoBehaviour
         }
         
     }
+
+    private static void IncreaseSpawns() {
+        minEnemies += 2;
+        maxEnemies += 2;
+    }
+
 
     private void DecideSpawns() {
         float percentage;

@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     private EnemyBehavior myEnemy;
     private float owTime;
     private float owTimeMax = 0.3f;
+
+    public static float healthMultiplier = 1f;
    // private RoomManager roomManager;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour
         //roomManager.enemiesRemaining++;
         enemySprite = GetComponent<SpriteRenderer>();
         myEnemy = GetComponent<EnemyBehavior>();
+        health *= healthMultiplier;
+
     }
 
     // Update is called once per frame
@@ -35,6 +39,11 @@ public class Enemy : MonoBehaviour
         //    death();
         //}
     }
+
+    public static void IncreaseHealth() {
+        healthMultiplier *= 1.2f;
+    }
+
 
     public void TakeDamage(float dmg) {
         timeSinceDamaged = 0;

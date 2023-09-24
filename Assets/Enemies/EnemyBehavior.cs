@@ -8,7 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject player;
     [Header("Movement")]
     public float moveSpeed;
-
+    public static float speedMultiplier = 1f;
 
     public ParticleSystem gold;
     private Rigidbody2D rb;
@@ -25,7 +25,11 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
-
+        moveSpeed *= speedMultiplier;
+    }
+    
+    public static void IncreaseSpeed() {
+        speedMultiplier *= 1.2f;
     }
 
 
