@@ -15,6 +15,7 @@ public class Room : MonoBehaviour
     //EXTREME DUCTTAPE for bug IDK
     public Notes[] notes;
     public GameObject vendingmachine;
+    public Sprite[] doorSprites;
 
     public GameObject[] enemyPrefabs;
     //public GameObject enemy;
@@ -111,9 +112,6 @@ public class Room : MonoBehaviour
         int numE;
         if (RoomNum < 4) {
             PoissonThemEnemies(enemyPrefabs[0], numEnemies);
-            int numCats = 1;
-            numEnemies += numCats;
-            PoissonThemEnemies(enemyPrefabs[3], numCats);
             return;
         }
         if (RoomNum < 10) {
