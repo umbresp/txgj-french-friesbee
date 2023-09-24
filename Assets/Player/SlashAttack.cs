@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlashAttack : MonoBehaviour
 {
-    
+    public float moveSpeed = 1;
     private float lifespan;
     private float timeRemaining;
 
@@ -28,6 +28,13 @@ public class SlashAttack : MonoBehaviour
     void Update()
     {
         timeRemaining -= Time.deltaTime;
+
+        Vector3 direction = transform.forward.normalized;
+        direction.x *= moveSpeed;
+        direction.y *= moveSpeed;
+        direction.z = 0;
+        transform.position += direction;
+        
         if (timeRemaining <= 0.0f)
         {
             Destroy(gameObject);
