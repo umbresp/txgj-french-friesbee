@@ -131,6 +131,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c940c1d36aa119646a425e977bad9c23, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b3bfcac966aae9546a752c884baec83d, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 223a92eb51b412c45a771441756c2997, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38ebae51635a5c340afcc049f0b55f9d, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c3f5ecd69c5d3e45ad76b139a88fdb1, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 39ab773599eb3d940ab1da1f989c0be6, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ca53da7ddbb6f143a9a9ec42638d4fd, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: b471424487452794499c2c506191351f, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: bff55e17146c0124b9b76ee9366f477d, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 41030f5d736bacf46a7e6814898bdf2b, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: 29212397fc60c824482273815189669e, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: b471424487452794499c2c506191351f, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: bff55e17146c0124b9b76ee9366f477d, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[13]
+      value: 
+      objectReference: {fileID: 8300000, guid: 41030f5d736bacf46a7e6814898bdf2b, type: 3}
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: sounds.Array.data[14]
+      value: 
+      objectReference: {fileID: 8300000, guid: 29212397fc60c824482273815189669e, type: 3}
     - target: {fileID: 1479580162016820953, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5535555
