@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public GameObject gameController;
+
+    private CoinCount coinCounter;
+    private RoomManager roomManager;
+
     private Rigidbody2D rb;
     
     private float horizontalInput;
@@ -15,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coinCounter = gameController.GetComponent<CoinCount>();
+        roomManager = gameController.GetComponent<RoomManager>();
     }
 
     // Update is called once per frame
@@ -35,8 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        
+        int floor = ((int) roomManager.levelNumber) / 5;
+        coinCounter.gainCoins(5 * Mathf.Pow(2, floor));
     }
-
-
 }
