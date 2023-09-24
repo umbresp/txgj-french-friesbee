@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    characterName: ooga booga
+    characterName: Ben the Daughter
     sentences:
-    - ooh fancy
-    - nice
+    - "Whenever you go to the casino, you never felt \u2018all there\u2019 to me."
+    - I hope that one day, you can free yourself from whatever is <color=red>binding</color=red>
+      you to this curse of <color=red>gambling</color=red>.
