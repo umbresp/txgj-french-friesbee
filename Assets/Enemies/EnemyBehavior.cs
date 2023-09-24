@@ -39,6 +39,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!this.gameObject.scene.isLoaded) return;
         Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
         
 

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quit : MonoBehaviour
+public class RoomManager : MonoBehaviour
 {
+    public int enemiesRemaining = 0;
+    public int levelNumber = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,5 @@ public class Quit : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }
