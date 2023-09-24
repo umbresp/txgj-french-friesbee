@@ -2574,7 +2574,7 @@ MonoBehaviour:
   - {fileID: 8492066501605925413}
   - {fileID: 6552637621631980481}
   - {fileID: 7748063671786194525}
-  roomSize: {x: 14.5, y: 7.45}
+  roomSize: {x: 14.4, y: 7.45}
   enemy: {fileID: 3278543892386863060, guid: afebd4fc5a890c44c8ba6b2fe5e7148c, type: 3}
   slotMachine: {fileID: 4296963195456225311, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
   randomsChosen: 

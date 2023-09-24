@@ -20,7 +20,6 @@ public class EnterNewRom : MonoBehaviour
         Transform parent = GetComponentInParent<Room>().transform;
         FollowRoom.Go(new Vector2(parent.position.x, parent.position.y));
         gameObject.SetActive(false);
-        Debug.Log("Decremeneted");
         Room.numRoomsTillSlot--;
     }
    
