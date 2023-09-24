@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    characterName: mail boc
+    characterName: Alex the Cat
     sentences:
-    - mmmmmm
-    - hungry
+    - Meow meow.
+    - Meow.
+    - Sincerely, Alex the Cat.

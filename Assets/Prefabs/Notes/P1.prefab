@@ -144,7 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    characterName: ooga booga
+    characterName: Jessica the Wife
     sentences:
-    - OOooh im a piece of paper!
-    - See ya later buddy
+    - ' Are you even getting any of my messages?'
+    - "I called you several times and you seem like you\u2019re always talking to
+      someone else."
+    - "Can\u2019t you just <color=red>stop listening</color=red> to them and listen
+      to me for once?"
+    - "Hello?\r"
