@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D playerRB;
     public bool activate;
+    public bool ow;
 
     public event Action letTheRoomKnow;
 
@@ -23,13 +24,14 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
+
     }
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!activate) { return; }
+        if (!activate || ow) { return; }
         Vector3 dir = (playerRB.position - rb.position).normalized;
         rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
 
