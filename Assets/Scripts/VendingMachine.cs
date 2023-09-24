@@ -23,6 +23,7 @@ public class VendingMachine : MonoBehaviour
     {
         if (cd >= 0 || !collision.gameObject.CompareTag("Player")) { return; }
         //cancel player movement
+        Debug.Log("Machine");
     }
 
     private void OnCollisionExit2D(Collision2D collision)

@@ -31,9 +31,8 @@ public class Room : MonoBehaviour
         if (RoomNum == 0) {
             //setup initial room
             whichNotesChosen = new HashSet<int>();
-            numRoomsTillSlot = Random.Range(3, 6);
-            numRoomsTillSlot = 1;
-            numRoomsTillNote = numRoomsTillSlot;
+            numRoomsTillSlot = Random.Range(3, 5);
+            numRoomsTillNote = Random.Range(6, 8);
             Setup(-1); 
             //SetupNotesList();
         }
@@ -41,6 +40,11 @@ public class Room : MonoBehaviour
 
     public void Setup(int nono) {
         RoomNum++;
+
+        foreach(Notes n in notes) {
+            n.gameObject.SetActive(false);
+        }
+        vendingmachine.SetActive(false);
        
         foreach (Door d in Doors) {
             d.DoorInit();
@@ -64,9 +68,9 @@ public class Room : MonoBehaviour
         if (numRoomsTillNote <= 0) {
             Debug.Log("Hey! Note");
             int random = Random.Range(0, notes.Length);
-            while (!whichNotesChosen.Add(random)) {
-                random = Random.Range(0, notes.Length);
-            }
+            //while (!whichNotesChosen.Add(random)) {
+            //    random = Random.Range(0, notes.Length);
+            //}
             notes[random].gameObject.SetActive(true);
             numRoomsTillNote = Random.Range(3, 6);
             return;
