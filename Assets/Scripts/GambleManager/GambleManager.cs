@@ -24,35 +24,48 @@ public class GambleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slotsArrive) {
-            Vector3 interpPos = Vector3.Lerp(gambleScreen.localPosition, Vector3.zero, 0.05f);
+
+    }
+
+    public void bringInSlots() {
+        StopAllCoroutines();
+        StartCoroutine(GamblePanelEnters());
+    }
+
+    IEnumerator GamblePanelEnters() {
+
+        while (Vector3.Distance(gambleScreen.localPosition, Vector3.zero) > 5) {
+            Vector3 interpPos = Vector3.Lerp(gambleScreen.localPosition, Vector3.zero, 0.025f);
             gambleScreen.localPosition = interpPos;
-            if (Vector3.Distance(gambleScreen.localPosition, Vector3.zero) <= 10) {
+            
+            if (!titleArrive && Vector3.Distance(gambleScreen.localPosition, Vector3.zero) <= 10) {
+                titleArrive = true;
                 bringInTitle();
             }
+
             if (Vector3.Distance(gambleScreen.localPosition, Vector3.zero) <= 5) {
                 gambleScreen.localPosition = Vector3.zero;
-                slotsArrive = false;
             }
+            yield return null;
         }
+        titleArrive = false;
+    }
 
-        if (titleArrive) {
-            Vector3 dest = new Vector3(0, -360, 0);
-            Vector3 interpPos = Vector3.Lerp(titleScreen.localPosition, dest, 0.05f);
+    public void bringInTitle() {
+        StartCoroutine(TitlePanelEnters());
+    }
+
+    IEnumerator TitlePanelEnters() {
+        Vector3 dest = new Vector3(0, -360, 0);
+        while (Vector3.Distance(titleScreen.localPosition, dest) > 5) {
+            Vector3 interpPos = Vector3.Lerp(titleScreen.localPosition, dest, 0.025f);
             titleScreen.localPosition = interpPos;
+
             if (Vector3.Distance(titleScreen.localPosition, dest) <= 5) {
                 titleScreen.localPosition = dest;
-                titleArrive = false;
-                ready = true;
             }
+            yield return null;
         }
-    }
-
-    private void bringInSlots() {
-        slotsArrive = true;
-    }
-
-    private void bringInTitle() {
-        titleArrive = true;
+        ready = true;
     }
 }
