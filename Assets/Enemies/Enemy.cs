@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     //public GameObject gameManager;
     private SpriteRenderer enemySprite;
     private float TimeSinceDamaged = 1;
-    public EnemyBehavior myEnemy;
+    private EnemyBehavior myEnemy;
     private float owTime;
     private float owTimeMax = 0.3f;
    // private RoomManager roomManager;
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
 
         enemySprite.color = Color.Lerp(Color.red, Color.white, Mathf.Clamp(TimeSinceDamaged, 0, 1f));
-        TimeSinceDamaged += (Time.deltaTime * 2);
+        if (TimeSinceDamaged < 2f) { TimeSinceDamaged += (Time.deltaTime * 2); };
         
         if (owTime > 0) { owTime -= Time.deltaTime; }
         myEnemy.ow = owTime > 0;

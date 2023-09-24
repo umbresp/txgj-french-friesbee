@@ -44,10 +44,9 @@ public class SlashAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-            Debug.Log("Hey!");
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
-            other.attachedRigidbody.AddForce(transform.right.normalized * knockbackF);
+            other.attachedRigidbody.AddForce(transform.right * knockbackF);
             
         }
     }

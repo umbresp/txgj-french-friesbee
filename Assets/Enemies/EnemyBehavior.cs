@@ -41,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour
         //    transform.position += (displacement * moveSpeed * Time.deltaTime);                        
         //}
         Vector3 scale = transform.localScale;
-        scale.x = -Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
+        scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 
