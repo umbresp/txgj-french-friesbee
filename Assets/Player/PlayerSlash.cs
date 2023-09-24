@@ -33,6 +33,7 @@ public class PlayerSlash : MonoBehaviour
     {
         timeUntilAttack -= Time.deltaTime;
         if (timeUntilAttack <= 0.0) {
+            timeUntilAttack = timePerAttack;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 playerToMouseDirection = (mousePosition - transform.position);
 
@@ -50,7 +51,6 @@ public class PlayerSlash : MonoBehaviour
             GameObject slashAttack = Instantiate(slash, spawnPos, attackRotation);
             slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
             swordSounds();
-            timeUntilAttack = timePerAttack;
         }
     }
 
