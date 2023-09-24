@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     private Rigidbody2D rb;
-    
+
+    [SerializeField] AudioClip[] sounds;
+    AudioSource coinAudioSource;
+
     private float horizontalInput;
     private float verticalInput;
 
@@ -15,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        coinAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,8 +40,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        
+        coinSounds();
     }
+    
+    void coinSounds()
+    {
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        coinAudioSource.PlayOneShot(clip);
+    }
+
 
 
 }
