@@ -113,6 +113,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+        Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
     }
 
 }

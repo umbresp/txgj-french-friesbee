@@ -30,16 +30,20 @@ public class FollowRoom : MonoBehaviour
                 }
             }
             Player.move = true;
-            //if not a slot room, SLAM the doors shut 
-            if (Room.numRoomsTillSlot >= 0) { 
-                recent.ActivateEm();
-                foreach (Door d in recent.Doors) {
+
+            if (recent.ActivateEm()) { 
+                 foreach (Door d in recent.Doors) {
                     d.DoorInit();
                 }
-            } else {
-                //it is a slot room! leaves the door open, and decide the next num rooms till slot
-                Room.numRoomsTillSlot = Random.Range(3, 6);
             }
+           
+            //if (Room.numRoomsTillNote >= 0 && Room.numRoomsTillSlot >= 0) { 
+            //    recent.ActivateEm();
+            //    foreach (Door d in recent.Doors) {
+            //        d.DoorInit();
+            //    }
+            //}
+            
         }
     }
 
