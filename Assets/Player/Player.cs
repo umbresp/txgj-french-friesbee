@@ -6,15 +6,18 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    
     public GameObject gameController;
+
+    [SerializeField] AudioClip[] sounds;
+    AudioSource coinAudioSource;
 
     private CoinCount coinCounter;
     private RoomManager roomManager;
 
     private Rigidbody2D rb;
 
-    [SerializeField] AudioClip[] sounds;
-    AudioSource coinAudioSource;
+    
 
     private float horizontalInput;
     private float verticalInput;
