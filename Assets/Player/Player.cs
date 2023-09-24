@@ -22,19 +22,23 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    public static bool move;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coinCounter = gameController.GetComponent<CoinCount>();
         roomManager = gameController.GetComponent<RoomManager>();
-        
         coinAudioSource = GetComponent<AudioSource>();
+        move = true;
+
     }
 
     // Update is called once per frame
     void Update()
-{
+    {
+        if (!move) { rb.velocity = Vector2.zero; return; }
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
