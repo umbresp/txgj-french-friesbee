@@ -20,6 +20,11 @@ public class CoinCount : MonoBehaviour
 
     public void loseCoins(float loss) {
         coins -= loss;
+        if (coins <= 0) {
+            coins = 0;
+            updateCounter();
+            loseScreen();
+        }
         updateCounter();
     }
 
@@ -30,5 +35,10 @@ public class CoinCount : MonoBehaviour
 
     public void updateCounter() {
         coinCounter.text = coins.ToString();
+    }
+
+    //TODO: show loss graphic
+    public void loseScreen() {
+
     }
 }

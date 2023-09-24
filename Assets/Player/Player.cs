@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    private Rigidbody2D rb;
+    
+    public GameObject gameController;
 
     [SerializeField] AudioClip[] sounds;
     AudioSource coinAudioSource;
+
+    private CoinCount coinCounter;
+    private RoomManager roomManager;
+
+    private Rigidbody2D rb;
+
+    
 
     private float horizontalInput;
     private float verticalInput;
@@ -18,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coinCounter = gameController.GetComponent<CoinCount>();
+        roomManager = gameController.GetComponent<RoomManager>();
         
         coinAudioSource = GetComponent<AudioSource>();
     }
@@ -40,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        int floor = ((int) roomManager.levelNumber) / 5;
+        coinCounter.gainCoins(5 * Mathf.Pow(2, floor));
+
         coinSounds();
     }
     

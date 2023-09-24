@@ -29,11 +29,8 @@ public class SlashAttack : MonoBehaviour
     {
         timeRemaining -= Time.deltaTime;
 
-        Vector3 direction = transform.forward.normalized;
-        direction.x *= moveSpeed;
-        direction.y *= moveSpeed;
-        direction.z = 0;
-        transform.position += direction;
+        Vector3 direction = transform.right.normalized * moveSpeed;
+        transform.position += direction * Time.deltaTime;
         
         if (timeRemaining <= 0.0f)
         {
