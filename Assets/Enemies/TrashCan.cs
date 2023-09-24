@@ -41,6 +41,7 @@ public class TrashCan : MonoBehaviour
                         Debug.Log("Explosion!");
                         GameObject exp = Instantiate(explosion, transform.position, Quaternion.Euler(0, 0, 270f), transform.parent);
                         exp.GetComponent<Explosion>().SetPlayer(player);
+                        myEnemy.noEXP = true;
                         Destroy(gameObject);
                     }
                 }

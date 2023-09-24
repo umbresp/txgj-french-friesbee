@@ -16,9 +16,12 @@ public class Room : MonoBehaviour
     public Notes[] notes;
     public GameObject vendingmachine;
 
-    public GameObject enemy;
+    public GameObject[] enemyPrefabs;
+    //public GameObject enemy;
     //public GameObject slotMachine;
     public List<int> randomsChosen;
+    public static int minEnemies;
+    public static int maxEnemies;
 
     private List<GameObject> enemies;
     private int numEnemies;
@@ -30,6 +33,8 @@ public class Room : MonoBehaviour
     {
         if (RoomNum == 0) {
             //setup initial room
+            minEnemies = 1;
+            maxEnemies = 4;
             whichNotesChosen = new HashSet<int>();
             numRoomsTillSlot = Random.Range(3, 5);
             numRoomsTillNote = Random.Range(6, 8);
@@ -68,11 +73,13 @@ public class Room : MonoBehaviour
         if (numRoomsTillNote <= 0) {
             Debug.Log("Hey! Note");
             int random = Random.Range(0, notes.Length);
-            //while (!whichNotesChosen.Add(random)) {
-            //    random = Random.Range(0, notes.Length);
-            //}
+            if (whichNotesChosen.Count != notes.Length) { 
+                while (!whichNotesChosen.Add(random)) {
+                    random = Random.Range(0, notes.Length);
+                }
+            }
             notes[random].gameObject.SetActive(true);
-            numRoomsTillNote = Random.Range(3, 6);
+            numRoomsTillNote = Random.Range(6, 8);
             return;
         }
 
@@ -87,17 +94,45 @@ public class Room : MonoBehaviour
         }
 
         if (nono != -1) { //don't spawn enemies for starting floor
-            numEnemies = Random.Range(3, 6);
-            PoissonThemEnemies();
+            if (RoomNum % 4 == 0) {
+                //increase the number of allowed enemies by 2?
+                minEnemies += 2;
+                maxEnemies += 4;
+            }
+            numEnemies = Random.Range(minEnemies, maxEnemies);
+            enemies = new List<GameObject>();
+            DecideSpawns();
         }
-
         
     }
 
-    private void PoissonThemEnemies() {
-        enemies = new List<GameObject>();
+    private void DecideSpawns() {
+        float percentage;
+        int numE;
+        if (RoomNum < 4) {
+            PoissonThemEnemies(enemyPrefabs[0], numEnemies);
+            return;
+        }
+        if (RoomNum < 10) {
+            percentage = Random.Range(0f, 1f);
+            numE = (int) (numEnemies * percentage);
+            PoissonThemEnemies(enemyPrefabs[0], numE);
+            PoissonThemEnemies(enemyPrefabs[1], numEnemies - numE);
+            return;
+        }
+        percentage = Random.Range(0f, 1f);
+        numE = (int)(numEnemies * percentage);
+        PoissonThemEnemies(enemyPrefabs[0], numE);
+        PoissonThemEnemies(enemyPrefabs[1], numEnemies - numE);
+        int numBombs = Random.Range(0, 2 + (RoomNum / 10));
+        numEnemies += numBombs;
+        PoissonThemEnemies(enemyPrefabs[2], numBombs);
+        return;
+    }
 
-        for (int i = 0; i < numEnemies; i++)
+    private void PoissonThemEnemies(GameObject enemy, int num) {
+
+        for (int i = 0; i < num; i++)
         {
             int tries = 0;
             while (tries < 50) { 
@@ -107,8 +142,8 @@ public class Room : MonoBehaviour
                 Vector2 pos = new Vector2(maxHori, maxVert);
 
                 bool notAllowed = false;
-                foreach(GameObject enemy in enemies) { 
-                    if (Vector2.Distance(enemy.transform.position, pos) < poissonRad) {
+                foreach(GameObject en in enemies) { 
+                    if (Vector2.Distance(en.transform.position, pos) < poissonRad) {
                         notAllowed = true;
                         break;
                     }
@@ -118,6 +153,8 @@ public class Room : MonoBehaviour
                     continue;
                 }
 
+
+
                 GameObject e = Instantiate(enemy, pos, Quaternion.identity, transform);
                 e.GetComponent<EnemyBehavior>().letTheRoomKnow += EnemyDown;
                 enemies.Add(e);
@@ -125,6 +162,7 @@ public class Room : MonoBehaviour
             }
         }
     }
+
     public bool ActivateEm() { 
         if (enemies == null) { return false; }
         foreach(GameObject e in enemies) {

@@ -15,6 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     private Rigidbody2D playerRB;
     public bool activate;
     public bool ow;
+    public bool noEXP;
 
     public event Action letTheRoomKnow;
 
@@ -51,9 +52,11 @@ public class EnemyBehavior : MonoBehaviour
     private void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;
-        Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
         if (Room.MostRecentLoadedRoom) {
             letTheRoomKnow?.Invoke();
+        }
+        if (!noEXP) { 
+            Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
         }
     }
 
