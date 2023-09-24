@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
     private RoomManager roomManager;
 
     private Rigidbody2D rb;
-    
+
+    [SerializeField] AudioClip[] sounds;
+    AudioSource coinAudioSource;
+
     private float horizontalInput;
     private float verticalInput;
 
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coinCounter = gameController.GetComponent<CoinCount>();
         roomManager = gameController.GetComponent<RoomManager>();
+        
+        coinAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,5 +49,16 @@ public class Player : MonoBehaviour
     {
         int floor = ((int) roomManager.levelNumber) / 5;
         coinCounter.gainCoins(5 * Mathf.Pow(2, floor));
+
+        coinSounds();
     }
+    
+    void coinSounds()
+    {
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        coinAudioSource.PlayOneShot(clip);
+    }
+
+
+
 }

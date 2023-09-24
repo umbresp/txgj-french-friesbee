@@ -163,6 +163,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  sounds:
+  - {fileID: 8300000, guid: 3400780291a29014f84a381c5dd250ea, type: 3}
+  - {fileID: 8300000, guid: 50dc933333b44684bb667a927b60c54e, type: 3}
+  - {fileID: 8300000, guid: eaf4e2462318f2b40b58d8d30f1291c5, type: 3}
+  - {fileID: 8300000, guid: 5f0ce925529ec6846bd789949d19b12b, type: 3}
+  - {fileID: 8300000, guid: c6f68c9d356df7445a3f1a1632eb83d0, type: 3}
+  - {fileID: 8300000, guid: 401f83081fae5f947bd551703215d3e6, type: 3}
+  - {fileID: 8300000, guid: 6dc7f0a4f3a2e7143bb98a598284e481, type: 3}
+  - {fileID: 8300000, guid: 4e52b203006c4a0449005e05e2bd44a1, type: 3}
+  - {fileID: 8300000, guid: f5a73b888e8a64445ab4041380b39e90, type: 3}
 --- !u!114 &-5214464899830552803
 MonoBehaviour:
   m_ObjectHideFlags: 0
