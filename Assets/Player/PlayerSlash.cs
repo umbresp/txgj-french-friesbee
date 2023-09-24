@@ -48,6 +48,26 @@ public class PlayerSlash : MonoBehaviour
                 
             timeUntilAttack = timePerAttack;
         }
-        
     }
+
+    public void rangeUp() {
+        range *= 1.2f;
+    }
+
+    public void attackSizeUp() {
+        size *= 1.1f;
+    }
+
+    public void attackSpeedUp() {
+        timePerAttack *= 0.9f;
+    }
+
+    public void attackTimeUp() {
+        attackLifespan *= 1.1f;
+    }
+
+    public void damageUp() {
+        attackDamage *= 1.25f;
+    }
+
 }
