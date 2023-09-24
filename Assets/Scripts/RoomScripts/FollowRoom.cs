@@ -33,7 +33,7 @@ public class FollowRoom : MonoBehaviour
 
             if (recent.ActivateEm()) { 
                  foreach (Door d in recent.Doors) {
-                    d.DoorInit();
+                    d.DoorInit(null);
                 }
             }
            

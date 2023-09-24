@@ -51,9 +51,9 @@ public class Room : MonoBehaviour
             n.gameObject.SetActive(false);
         }
         vendingmachine.SetActive(false);
-       
+        int randomDoorI = Random.Range(0, doorSprites.Length);
         foreach (Door d in Doors) {
-            d.DoorInit();
+            d.DoorInit(doorSprites[randomDoorI]);
         }
         randomsChosen = new List<int>();
         HashSet<int> chosen = new HashSet<int>();

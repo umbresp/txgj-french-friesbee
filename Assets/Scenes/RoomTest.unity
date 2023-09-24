@@ -961,22 +961,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1484901439}
     m_Modifications:
-    - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
-      propertyPath: doorSprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
-      propertyPath: doorSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: eeda83f55dab15040a6594257b35dce1, type: 3}
-    - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
-      propertyPath: doorSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 954f8c4567e09dd4bb4f59330993c408, type: 3}
-    - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
-      propertyPath: doorSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: f15f702dc047329489eb127eb2f6874f, type: 3}
     - target: {fileID: 6524840163264437560, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
