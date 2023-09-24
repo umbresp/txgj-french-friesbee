@@ -20,15 +20,23 @@ public class SettingsManager : MonoBehaviour
     public GameObject bgm;
     private AudioSource[] audioSources;
     private float vol;
+    private float nv;
+
+    public Dialogue gambleDialogue;
+    public Dialogue volDialogue;
+    public Dialogue bothDialogue;
+    private DialogueManager dialogueManager;
 
     // Start is called before the first frame update
     void Start()
     {
         vol = 0.5f;
+        nv = 1f;
         settingsPanel.localPosition = offScreen;
         audioSources = bgm.GetComponents<AudioSource>();
         audioSources[0].volume = vol;
         audioSources[1].volume = 0;
+        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame
@@ -41,6 +49,20 @@ public class SettingsManager : MonoBehaviour
     {
         vol = a / 2;
         audioSources[1].volume = vol;
+    }
+
+    public void setNarratorVolume(float a)
+    {
+        nv = a;
+        Debug.Log(nv);
+        if (nv == 0f)
+        {
+            narratorToggled = false;
+        }
+        else
+        {
+            narratorToggled = true;
+        }
     }
 
     public void toggleGambleSetting() {
@@ -82,6 +104,19 @@ public class SettingsManager : MonoBehaviour
         setttingsArrive = false;
         audioSources[1].volume = 0;
         audioSources[0].volume = vol;
+        
+        if (!gambleToggled && narratorToggled)
+        {
+            dialogueManager.StartDialogue(gambleDialogue);
+        }
+        else if (gambleToggled && !narratorToggled)
+        {
+            dialogueManager.StartDialogue(volDialogue);
+        }
+        else if (!gambleToggled && !narratorToggled)
+        {
+            dialogueManager.StartDialogueWithoutNarrator(bothDialogue);
+        }
     }
 
     IEnumerator SettingsPanelLeaves()

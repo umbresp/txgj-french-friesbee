@@ -321,7 +321,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
   m_PrefabInstance: {fileID: 1810214997}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1053736074}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc99b26d958e2b9478576385a88a9da4, type: 3}
@@ -2268,6 +2268,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017947862}
   m_CullTransparentMesh: 1
+--- !u!1 &1053736074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4720202154449842634, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+  m_PrefabInstance: {fileID: 1810214997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137817736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,6 +2309,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1154936888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5856928362840407701, guid: c8063fb2441caca4fa8da2481a4b8b07, type: 3}
+  m_PrefabInstance: {fileID: 23163705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194870886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,7 +3732,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1053736074}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1810214997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3739,6 +3761,72 @@ PrefabInstance:
       propertyPath: settingsPanel
       value: 
       objectReference: {fileID: 4289699681786463166}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 3675556576097072174}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: volDialogue.characterName
+      value: Narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: gambleDialogue.characterName
+      value: Narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: volDialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: bothDialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: gambleDialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: volDialogue.sentences.Array.data[0]
+      value: "Hey, you weren\u2019t thinking of shutting me out right?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: volDialogue.sentences.Array.data[1]
+      value: 'You know, that settings volume slider is a lie. It''s all in your own
+        head. Even if you turn me down, I''ll still try and force my way inside.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: volDialogue.sentences.Array.data[2]
+      value: "!You still need to gamble! We\u2019re not going to stop as long as
+        you\u2019re still here!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: bothDialogue.sentences.Array.data[0]
+      value: "You feel something different. It\u2019s\u2026 quieter somehow?\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: bothDialogue.sentences.Array.data[1]
+      value: "Now that you <color=red>freed</color=red> yourself from him and your
+        desire to press <color=red>G</color=red>, you don\u2019t really feel like
+        gambling anymore.\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: bothDialogue.sentences.Array.data[2]
+      value: 'Time to head home.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: gambleDialogue.sentences.Array.data[0]
+      value: "You\u2019re not supposed to do that! You have to gamble! That\u2019s
+        the point of the game!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: gambleDialogue.sentences.Array.data[1]
+      value: "Don\u2019t worry, I would never leave you just because of a mistake.
+        I\u2019ll go ahead and keep that <color=red>binding</color=red> for you."
+      objectReference: {fileID: 0}
     - target: {fileID: 4720202154449842634, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
       propertyPath: m_Name
       value: SettingsManager
@@ -4540,7 +4628,7 @@ MonoBehaviour:
       - m_Target: {fileID: 43238723}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: setVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4903,6 +4991,7 @@ MonoBehaviour:
   nameText: {fileID: 23163708}
   dialogueText: {fileID: 23163707}
   dialogueCanvas: {fileID: 23163706}
+  dialogueCharacter: {fileID: 1154936888}
 --- !u!1 &4252240493537456541
 GameObject:
   m_ObjectHideFlags: 0

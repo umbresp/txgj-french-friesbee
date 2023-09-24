@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     [SerializeField]
     public GameObject dialogueCanvas;
+    [SerializeField]
+    public GameObject dialogueCharacter;
 
     private Queue<string> sentences;
     private bool isTyping;
@@ -23,11 +25,30 @@ public class DialogueManager : MonoBehaviour
         aus = GetComponents<AudioSource>();
     }
 
+    public void StartDialogueWithoutNarrator(Dialogue dialogue)
+    {
+        if (aus == null) aus = GetComponents<AudioSource>();
+        Player.move = false;
+        dialogueCanvas.SetActive(true);
+        dialogueCharacter.SetActive(false);
+        nameText.text = dialogue.characterName;
+        sentences = new Queue<string>();
+        isTyping = false;
+        cur = 0;
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        DisplayNextSentence();
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         if (aus == null) aus = GetComponents<AudioSource>();
         Player.move = false;
         dialogueCanvas.SetActive(true);
+        dialogueCharacter.SetActive(true);
         nameText.text = dialogue.characterName;
         sentences = new Queue<string>();
         isTyping = false;
