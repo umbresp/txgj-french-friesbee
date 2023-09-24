@@ -29,7 +29,6 @@ public class PlayerSlash : MonoBehaviour
     {
         timeUntilAttack -= Time.deltaTime;
         if (timeUntilAttack <= 0.0) {
-            Debug.Log("hi");
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 playerToMouseDirection = (mousePosition - transform.position);
 
@@ -38,11 +37,13 @@ public class PlayerSlash : MonoBehaviour
             playerToMouseFlat.z = 0;
             Vector3 playerDirection = playerToMouseFlat.normalized;
             Debug.Log(playerDirection);
-            Quaternion playerRotation = rb.transform.rotation;
+
+            float zRotation = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
+            Quaternion attackRotation = Quaternion.Euler(0, 0, zRotation);
 
             Vector3 spawnPos = playerPos + playerDirection*range;
 
-            GameObject slashAttack = Instantiate(slash, spawnPos, playerRotation);
+            GameObject slashAttack = Instantiate(slash, spawnPos, attackRotation);
             slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
                 
             timeUntilAttack = timePerAttack;
