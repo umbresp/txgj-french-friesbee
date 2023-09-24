@@ -6,15 +6,18 @@ public class Room : MonoBehaviour
 {
     public Door[] Doors; //top left bot right
     public Vector2 roomSize = new Vector2(17.65f, 10.1f);
+    //alos HOLY shit look at all these statics im tired
     public static int RoomNum = 0;
     public static Room MostRecentLoadedRoom;
     public static int numRoomsTillSlot;
-    public static List<Notes> notes;
     public static HashSet<int> whichNotesChosen;
     public static int numRoomsTillNote;
+    //EXTREME DUCTTAPE for bug IDK
+    public Notes[] notes;
+    public GameObject vendingmachine;
 
     public GameObject enemy;
-    public GameObject slotMachine;
+    //public GameObject slotMachine;
     public List<int> randomsChosen;
 
     private List<GameObject> enemies;
@@ -26,9 +29,12 @@ public class Room : MonoBehaviour
     void Start()
     {
         if (RoomNum == 0) {
+            //setup initial room
+            whichNotesChosen = new HashSet<int>();
             numRoomsTillSlot = Random.Range(3, 6);
+            numRoomsTillSlot = 1;
             numRoomsTillNote = numRoomsTillSlot;
-            Setup(-1); //setup initial room
+            Setup(-1); 
             //SetupNotesList();
         }
     }
@@ -56,11 +62,13 @@ public class Room : MonoBehaviour
         }
 
         if (numRoomsTillNote <= 0) {
-            int random = Random.Range(0, notes.Count);
+            Debug.Log("Hey! Note");
+            int random = Random.Range(0, notes.Length);
             while (!whichNotesChosen.Add(random)) {
-                random = Random.Range(0, notes.Count);
+                random = Random.Range(0, notes.Length);
             }
-            Instantiate(notes[random], transform.position, Quaternion.identity, transform);
+            notes[random].gameObject.SetActive(true);
+            numRoomsTillNote = Random.Range(3, 6);
             return;
         }
 
@@ -68,7 +76,9 @@ public class Room : MonoBehaviour
         if (numRoomsTillSlot <= 0) {
             //no enemies
             //spawn machine
-            Instantiate(slotMachine, transform.position, Quaternion.identity, transform);
+            Debug.Log("Machine");
+            vendingmachine.SetActive(true);
+            numRoomsTillSlot = Random.Range(3, 6);
             return;
         }
 
@@ -111,17 +121,13 @@ public class Room : MonoBehaviour
             }
         }
     }
-
-    private void SetupNotesList() {
-        whichNotesChosen = new HashSet<int>();
-        notes = new List<Notes>();
-    }
-
-    public void ActivateEm() { 
+    public bool ActivateEm() { 
+        if (enemies == null) { return false; }
         foreach(GameObject e in enemies) {
             e.GetComponent<EnemyBehavior>().activate = true;
         }
         enemies.Clear();
+        return true;
     }
 
     public void EnemyDown() {

@@ -30,19 +30,20 @@ public class FollowRoom : MonoBehaviour
                 }
             }
             Player.move = true;
-            if (Room.numRoomsTillNote <= 0) {
-                //note room!
-                Room.numRoomsTillNote = Random.Range(3, 6);
-            } else if (Room.numRoomsTillSlot <= 0) {
-                //slot room!
-                Room.numRoomsTillSlot = Random.Range(3, 6);
-            } else { 
-                //normal room, slam those doors!
-                recent.ActivateEm();
-                foreach (Door d in recent.Doors) {
+
+            if (recent.ActivateEm()) { 
+                 foreach (Door d in recent.Doors) {
                     d.DoorInit();
                 }
             }
+           
+            //if (Room.numRoomsTillNote >= 0 && Room.numRoomsTillSlot >= 0) { 
+            //    recent.ActivateEm();
+            //    foreach (Door d in recent.Doors) {
+            //        d.DoorInit();
+            //    }
+            //}
+            
         }
     }
 
