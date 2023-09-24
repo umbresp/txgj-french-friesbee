@@ -28,10 +28,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        move = true;
         coinCounter = gameController.GetComponent<CoinCount>();
         roomManager = gameController.GetComponent<RoomManager>();
         coinAudioSource = GetComponent<AudioSource>();
-        move = true;
 
     }
 
