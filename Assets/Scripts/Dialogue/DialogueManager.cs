@@ -14,19 +14,24 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private bool isTyping;
     private string curSentence;
+
+    private AudioSource[] aus;
+    private int cur;
     // Start is called before the first frame update
     void Start()
     {
-        
+        aus = GetComponents<AudioSource>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        if (aus == null) aus = GetComponents<AudioSource>();
+        Player.move = false;
         dialogueCanvas.SetActive(true);
         nameText.text = dialogue.characterName;
         sentences = new Queue<string>();
         isTyping = false;
-
+        cur = 0;
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -59,9 +64,18 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         curSentence = sentence;
+        if (curSentence[0] == '!')
+        {
+            curSentence = sentence.Substring(1);
+            cur = 1;
+        }
+        else
+        {
+            cur = 0;
+        }
         // sentence = Regex.Replace(sentence, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>", "");
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(curSentence));
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -78,8 +92,8 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 dialogueText.text += letter;
-                // if (!textSound.isPlaying)
-                //     textSound.Play();
+                if (!aus[cur].isPlaying) aus[cur].Play();
+                Debug.Log("Played " + cur);
             }
             if (dialogueText.text == sentence)
             {
@@ -105,6 +119,7 @@ public class DialogueManager : MonoBehaviour
         for (; count < content.Length; ++newIndex, ++count)
         {
             dialogueText.text = dialogueText.text.Insert(newIndex, content[count] + "");
+            if (!aus[cur].isPlaying) aus[cur].Play();
         }
 
         return currIndex + frontTag.Length + content.Length + backTag.Length - 1;
@@ -113,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+        Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
     }
 
 }

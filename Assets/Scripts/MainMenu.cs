@@ -42,7 +42,7 @@ public class Quit : MonoBehaviour
             screenshot.transform.localPosition = Vector3.Lerp(origin, destination, currentMovementTime / totalMovementTime);
             yield return null;
         }
-        SceneManager.LoadScene("CombatTest");
+        SceneManager.LoadScene("RoomTest2");
     }
 
     public void ExitGame()

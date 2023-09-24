@@ -13,13 +13,14 @@ public class EnterNewRom : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ememy")) { return; }
         _door.Enter();
         //move camera
         Player.move = false;
         Transform parent = GetComponentInParent<Room>().transform;
         FollowRoom.Go(new Vector2(parent.position.x, parent.position.y));
         gameObject.SetActive(false);
+        Room.numRoomsTillNote--;
         Room.numRoomsTillSlot--;
     }
    

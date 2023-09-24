@@ -8,12 +8,14 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject player;
     [Header("Movement")]
     public float moveSpeed;
-
+    public static float speedMultiplier = 1f;
 
     public ParticleSystem gold;
     private Rigidbody2D rb;
     private Rigidbody2D playerRB;
     public bool activate;
+    public bool ow;
+    public bool noEXP;
 
     public event Action letTheRoomKnow;
 
@@ -23,32 +25,46 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
+        moveSpeed *= speedMultiplier;
+    }
+    
+    public static void IncreaseSpeed() {
+        speedMultiplier *= 1.2f;
     }
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!activate) { return; }
+        if (!activate || ow) { return; }
         Vector3 dir = (playerRB.position - rb.position).normalized;
-        rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
+        if (moveSpeed != 0) { 
+            rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
+        }
 
         //Vector3 displacement = player.transform.position -transform.position;
         //displacement = displacement.normalized;
         //if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
         //    transform.position += (displacement * moveSpeed * Time.deltaTime);                        
         //}
-        Vector3 scale = transform.localScale;
-        scale.x = -Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
-        transform.localScale = scale;
+        if (moveSpeed != 0) { 
+            if (Mathf.Sign(dir.x) == -1) {
+                transform.rotation = Quaternion.Euler(0, 180f, 0);
+            } else {
+                transform.rotation = Quaternion.identity;
+            }
+        }
+     
     }
 
     private void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;
-        Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
         if (Room.MostRecentLoadedRoom) {
             letTheRoomKnow?.Invoke();
+        }
+        if (!noEXP) { 
+            Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
         }
     }
 

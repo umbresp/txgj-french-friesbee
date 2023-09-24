@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    
-
     private float horizontalInput;
     private float verticalInput;
+    private SpriteRenderer sprite;
+    private float timeSinceDamaged = 1;
 
     public static bool move;
 
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         move = true;
+        sprite = GetComponent<SpriteRenderer>();
         coinCounter = gameController.GetComponent<CoinCount>();
         roomManager = gameController.GetComponent<RoomManager>();
         coinAudioSource = GetComponent<AudioSource>();
@@ -38,18 +39,31 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        sprite.color = Color.Lerp(Color.red, Color.white, Mathf.Clamp(timeSinceDamaged, 0, 1f));
+        if (timeSinceDamaged < 2f) { timeSinceDamaged += (Time.deltaTime * 2); };
+
         if (!move) { rb.velocity = Vector2.zero; return; }
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
- 
+
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerToMouseDirection = (mousePosition - transform.position).normalized;
+
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Sign(playerToMouseDirection.x) * Mathf.Abs(scale.x);
+        transform.localScale = scale;
+
         //Rotation for attack direction, not character sprites
-	    if (rb.velocity != Vector2.zero) 
-        {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
+        //if (rb.velocity != Vector2.zero) 
+        //   {
+        //       float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        //       transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //   }
     }
 
     private void OnParticleCollision(GameObject other)
@@ -67,6 +81,7 @@ public class Player : MonoBehaviour
     }
 
     public void receiveDamage(float damage) {
+        timeSinceDamaged = 0;
         coinCounter.loseCoins(damage);
     }
 

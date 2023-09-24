@@ -11,16 +11,21 @@ public class Door : MonoBehaviour
     public GameObject EnterTrigger; //enternewroom
     public GameObject ExitTrigger; //loadnewroom
 
+    private SpriteRenderer sprite;
+
     // Start is called before the first frame update
     void Start()
     {
- 
+        sprite = Wall.GetComponent<SpriteRenderer>();
     }
 
-    public void DoorInit() {
+    public void DoorInit(Sprite spr) {
         Wall.SetActive(true);
         ExitTrigger.SetActive(false);
         EnterTrigger.SetActive(false);
+        if (spr) {
+            Wall.GetComponent<SpriteRenderer>().sprite = spr;
+        }
     }
 
     //When you are leaving a room, this loads the next room
