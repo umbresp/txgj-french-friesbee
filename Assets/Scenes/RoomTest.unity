@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5214464899830552803, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: knockbackVal
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1479580162016820953, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -172,12 +176,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1648351781110578554, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648351781110578554, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1418339695}
     - target: {fileID: 2746578163667647095, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895311544060459507, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -576,6 +596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 99422382414801705, guid: 3f09bed7195aaf246972ce752aa6d7b6, type: 3}
+      propertyPath: coinCounter
+      value: 
+      objectReference: {fileID: 540446073}
     - target: {fileID: 3406896854748628740, guid: 3f09bed7195aaf246972ce752aa6d7b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -778,6 +802,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1484901439}
     m_Modifications:
+    - target: {fileID: 3412705015060088057, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 3877890433198435518, guid: d13df55157cb7e44d9fc29bd3ceecd0b, type: 3}
     - target: {fileID: 6524840163264437560, guid: 48b2a8f086cc7674db9c96b8046f110b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

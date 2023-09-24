@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class SlashAttack : MonoBehaviour
 {
-    public float moveSpeed = 1;
+    public float moveSpeed = 0.75f;
     private float lifespan;
     private float timeRemaining;
 
     private float damage;
+    private float knockbackF;
 
     private HashSet<GameObject> hits = new HashSet<GameObject>();
 
-    public void init(float attackLifespan, float attackDamage) 
+    public void init(float attackLifespan, float attackDamage, float knockbackForce) 
     {
         lifespan = attackLifespan;
         damage = attackDamage;
+        knockbackF = knockbackForce;
     }
 
     // Start is called before the first frame update
@@ -38,19 +40,15 @@ public class SlashAttack : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Sent each frame where another object is within a trigger collider
-    /// attached to this object (2D physics only).
-    /// </summary>
-    /// <param name="other">The other Collider2D involved in this collision.</param>
-    void OnTriggerStay2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Enemy enemyComponent = other.gameObject.GetComponent<Enemy>();
-        if(enemyComponent){
-            if (!hits.Contains(other.gameObject)) {
-                enemyComponent.health -= damage;
-                hits.Add(other.gameObject);
-            }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (!enemy) { return; }
+            enemy.TakeDamage(damage);
+            other.attachedRigidbody.AddForce(transform.right * knockbackF);
+            
         }
     }
 }

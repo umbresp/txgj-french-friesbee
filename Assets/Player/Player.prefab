@@ -191,10 +191,18 @@ MonoBehaviour:
   slash: {fileID: 1283639008912135204, guid: 0215692221319a844a9eee079015706f, type: 3}
   range: 1
   size: 0
-  timePerAttack: 0.5
+  timePerAttack: 1.25
   attackLifespan: 0.1
   attackDamage: 5
-  sounds: []
+  knockbackVal: 1
+  sounds:
+  - {fileID: 8300000, guid: c940c1d36aa119646a425e977bad9c23, type: 3}
+  - {fileID: 8300000, guid: b3bfcac966aae9546a752c884baec83d, type: 3}
+  - {fileID: 8300000, guid: 223a92eb51b412c45a771441756c2997, type: 3}
+  - {fileID: 8300000, guid: 38ebae51635a5c340afcc049f0b55f9d, type: 3}
+  - {fileID: 8300000, guid: 9c3f5ecd69c5d3e45ad76b139a88fdb1, type: 3}
+  - {fileID: 8300000, guid: 39ab773599eb3d940ab1da1f989c0be6, type: 3}
+  - {fileID: 8300000, guid: 1ca53da7ddbb6f143a9a9ec42638d4fd, type: 3}
   horizontalInput: 0
   verticalInput: 0
 --- !u!82 &913345255009799717

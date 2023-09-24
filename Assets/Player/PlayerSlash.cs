@@ -11,6 +11,7 @@ public class PlayerSlash : MonoBehaviour
     public float timePerAttack;
     public float attackLifespan;
     public float attackDamage;
+    public float knockbackVal;
 
     [SerializeField] AudioClip[] sounds;
     AudioSource swordAudioSource;
@@ -31,6 +32,8 @@ public class PlayerSlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!Player.move) { return; }
         timeUntilAttack -= Time.deltaTime;
         if (timeUntilAttack <= 0.0) {
             timeUntilAttack = timePerAttack;
@@ -41,7 +44,6 @@ public class PlayerSlash : MonoBehaviour
             Vector3 playerToMouseFlat = playerToMouseDirection;
             playerToMouseFlat.z = 0;
             Vector3 playerDirection = playerToMouseFlat.normalized;
-            Debug.Log(playerDirection);
 
             float zRotation = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
             Quaternion attackRotation = Quaternion.Euler(0, 0, zRotation);
@@ -49,7 +51,7 @@ public class PlayerSlash : MonoBehaviour
             Vector3 spawnPos = playerPos + playerDirection*range;
 
             GameObject slashAttack = Instantiate(slash, spawnPos, attackRotation);
-            slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage);
+            slashAttack.GetComponent<SlashAttack>().init(attackLifespan, attackDamage, knockbackVal);
             swordSounds();
         }
     }
