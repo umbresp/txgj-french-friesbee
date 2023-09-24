@@ -111,6 +111,9 @@ public class Room : MonoBehaviour
         int numE;
         if (RoomNum < 4) {
             PoissonThemEnemies(enemyPrefabs[0], numEnemies);
+            int numCats = 1;
+            numEnemies += numCats;
+            PoissonThemEnemies(enemyPrefabs[3], numCats);
             return;
         }
         if (RoomNum < 10) {
@@ -127,6 +130,11 @@ public class Room : MonoBehaviour
         int numBombs = Random.Range(0, 2 + (RoomNum / 10));
         numEnemies += numBombs;
         PoissonThemEnemies(enemyPrefabs[2], numBombs);
+        if (RoomNum < 15) {
+            int numCats = Random.Range(0, 1 + (RoomNum / 10));
+            numEnemies += numCats;
+            PoissonThemEnemies(enemyPrefabs[3], numCats);
+        }
         return;
     }
 

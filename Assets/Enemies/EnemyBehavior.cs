@@ -34,17 +34,21 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (!activate || ow) { return; }
         Vector3 dir = (playerRB.position - rb.position).normalized;
-        rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
+        if (moveSpeed != 0) { 
+            rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
+        }
 
         //Vector3 displacement = player.transform.position -transform.position;
         //displacement = displacement.normalized;
         //if (Vector2.Distance (player.transform.position, transform.position) > 1.0f) {
         //    transform.position += (displacement * moveSpeed * Time.deltaTime);                        
         //}
-        if (Mathf.Sign(dir.x) == -1) {
-            transform.rotation = Quaternion.Euler(0, 180f, 0);
-        } else {
-            transform.rotation = Quaternion.identity;
+        if (moveSpeed != 0) { 
+            if (Mathf.Sign(dir.x) == -1) {
+                transform.rotation = Quaternion.Euler(0, 180f, 0);
+            } else {
+                transform.rotation = Quaternion.identity;
+            }
         }
      
     }

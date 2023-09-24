@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2751c44361997142b9e05d69f2533d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 8463165435676049014, guid: 17ec2f6169956894fb8ae14ad1addd70, type: 3}
+  fireball: {fileID: 8463165435676049014, guid: b578350fb83d38f42946987b71a3855b, type: 3}
   spawnPoint: {fileID: 4835404538236730724}
 --- !u!58 &2059781445797240116
 CircleCollider2D:

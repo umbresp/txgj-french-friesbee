@@ -10,7 +10,7 @@ public class TaxForms : MonoBehaviour
     public Transform spawnPoint;
 
     private float fireballCD;
-    private float fireballCDMax = 3f;
+    private float fireballCDMax = 2f;
     void Start()
     {
         myEnemy = GetComponent<EnemyBehavior>();

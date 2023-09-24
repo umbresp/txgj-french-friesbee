@@ -8,7 +8,7 @@ public class Cat : MonoBehaviour
     public Transform spawnPoint;
 
     private float fireballCD;
-    private float fireballCDMax = 3f;
+    private float fireballCDMax = 2.5f;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -27,7 +27,8 @@ public class Cat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!myEnemy.activate || myEnemy.ow) { return; }
+        if (!myEnemy.activate || myEnemy.ow) { return; }
+
         Vector2 offset = (new Vector2(transform.position.x, transform.position.y) - new Vector2(player.transform.position.x, player.transform.position.y));
         float angle = (Mathf.Rad2Deg * Mathf.Atan2(offset.y, offset.x));
         rb.rotation = angle;
