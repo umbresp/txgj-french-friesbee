@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,14 @@ public class EnemyBehavior : MonoBehaviour
     public ParticleSystem gold;
     private Rigidbody2D rb;
     private Rigidbody2D playerRB;
+    public bool activate;
+
+    public event Action letTheRoomKnow;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
     }
@@ -24,6 +29,7 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!activate) { return; }
         Vector3 dir = (playerRB.position - rb.position).normalized;
         rb.velocity = dir * moveSpeed * Time.fixedDeltaTime;
 
@@ -41,8 +47,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (!this.gameObject.scene.isLoaded) return;
         Instantiate(gold.gameObject, transform.position, Quaternion.identity, transform.parent);
-        
-
+        if (Room.MostRecentLoadedRoom) {
+            letTheRoomKnow?.Invoke();
+        }
     }
 
 }
