@@ -11,10 +11,13 @@ public class Quit : MonoBehaviour
     private float END_LOC = 6.417928f;
     private Vector3 origin;
     private Vector3 destination;
+    private Vector3 offScreen = new Vector3(0, 1150, 0);
+    public RectTransform creditsPanel;
     // Start is called before the first frame update
     void Start()
     {
         origin = new Vector3(-17.59759f, 480f, 0.8791972f);
+        creditsPanel.localPosition = offScreen;
         destination = origin;
         destination.y = END_LOC;
         trans.SetActive(false);
@@ -43,6 +46,51 @@ public class Quit : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene("RoomTest2");
+    }
+
+    public void ShowCredits()
+    {
+        StopAllCoroutines();
+        StartCoroutine(CreditsEnters());
+    }
+
+    IEnumerator CreditsEnters()
+    {
+
+        while (Vector3.Distance(creditsPanel.localPosition, Vector3.zero) > 5)
+        {
+            Vector3 interpPos = Vector3.Lerp(creditsPanel.localPosition, Vector3.zero, 0.05f);
+            creditsPanel.localPosition = interpPos;
+
+            if (Vector3.Distance(creditsPanel.localPosition, Vector3.zero) <= 5)
+            {
+                creditsPanel.localPosition = Vector3.zero;
+            }
+            yield return null;
+        }
+    }
+
+    public void HideCredits()
+    {
+        Player.move = true;
+        StopAllCoroutines();
+        StartCoroutine(CreditsLeaves());
+
+    }
+
+    IEnumerator CreditsLeaves()
+    {
+        while (Vector3.Distance(creditsPanel.localPosition, offScreen) > 5)
+        {
+            Vector3 interpPos = Vector3.Lerp(creditsPanel.localPosition, offScreen, 0.05f);
+            creditsPanel.localPosition = interpPos;
+
+            if (Vector3.Distance(creditsPanel.localPosition, offScreen) <= 5)
+            {
+                creditsPanel.localPosition = offScreen;
+            }
+            yield return null;
+        }
     }
 
     public void ExitGame()
