@@ -23,7 +23,11 @@ public class EndScreenController : MonoBehaviour
     {
         if (dialogueStarted && Player.move)
         {
-
+            SettingsManager.gambleToggled = true;
+            SettingsManager.narratorToggled = true;
+            Room.RestartStatics();
+            Enemy.healthMultiplier = 1f;
+            EnemyBehavior.speedMultiplier = 1f;
             SceneManager.LoadScene("RoomTest2");
         }
     }
