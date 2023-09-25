@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class GambleManager : MonoBehaviour
 {
+    public PlayerSlash player;
     public RectTransform gambleScreen;
     public RectTransform titleScreen;
     public CoinCount gameManager;
+    public DialogueManager dialoguer;
+
+    private Dialogue[] dialogues = new Dialogue[3];
+    public Dialogue dialogue1;
+    public Dialogue dialogue2;
+    public Dialogue dialogue3;
 
     public InfiniteScroll slotMachine1;
     public InfiniteScroll slotMachine2;
@@ -17,7 +24,7 @@ public class GambleManager : MonoBehaviour
     private bool ready = false;
 
     private bool freeSpin;
-    
+    private static int timeGambles;
     private static int[] slot0 = new int[3] {0, 0, 0};    //enemy speed
     private static int[] slot1 = new int[3] {5, 5, 5};    //enemy count
     private static int[] slot2 = new int[3] {12, 12, 12};    //enemy health
@@ -29,6 +36,9 @@ public class GambleManager : MonoBehaviour
     private static int[][] key = new int[][] {slot0, slot1, slot2, slot3, slot4, slot5, slot6};
     [SerializeField] AudioClip[] sounds;
     AudioSource gambleAudioSource;
+
+    private int maxGambles = 2;
+    private int gambles = 0;
 
     void Start()
     {
@@ -42,7 +52,11 @@ public class GambleManager : MonoBehaviour
         Vector3 titlePos = titleScreen.localPosition;
         titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
 
-        
+        dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        dialogues[0] = dialogue1;
+        dialogues[1] = dialogue2;
+        dialogues[2] = dialogue3;
+
     }
 
     // Update is called once per frame
@@ -51,11 +65,20 @@ public class GambleManager : MonoBehaviour
         if (ready && Input.GetKeyUp(KeyCode.G)) {
             Debug.Log("Gamble!");
             ready = false;
-            StartCoroutine(Gamble());
+            gambles++;
+            if (gambles == maxGambles) {
+                timeGambles++;
+                dialoguer.StartDialogue(dialogues[timeGambles]);
+                gameObject.SetActive(false);
+            } else { 
+                StartCoroutine(Gamble());
+            }
         }
     }
 
     IEnumerator Gamble() {
+
+        
         // Level pull
         // Update background
         slotMachine1.spinning = true;
@@ -89,7 +112,26 @@ public class GambleManager : MonoBehaviour
     }
 
     public void rewardStats(int statNumber) {
-
+        if (statNumber == 0) {
+            //enemy speed
+            EnemyBehavior.IncreaseSpeed();
+        } else if (statNumber == 1) {
+            //enemy count
+            Room.IncreaseSpawns();
+        } else if (statNumber == 2) {
+            Enemy.IncreaseHealth();
+            //enemy health
+        } else if (statNumber == 3) {
+            player.attackSizeUp();
+        } else if (statNumber == 4) {
+            player.attackTimeUp();
+        } else if (statNumber == 5) {
+            player.damageUp();
+        } else if (statNumber == 6) {
+            player.attackSpeedUp();
+        } else {
+            player.attackSpeedUp();
+        }
     }
 
     public void bringInSlots() {

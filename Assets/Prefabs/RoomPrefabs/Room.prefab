@@ -6115,7 +6115,7 @@ MonoBehaviour:
   - {fileID: 8492066501605925413}
   - {fileID: 6552637621631980481}
   - {fileID: 7748063671786194525}
-  roomSize: {x: 14.2, y: 7.15}
+  roomSize: {x: 14.2, y: 7.3}
   notes:
   - {fileID: 1142739639634856121}
   - {fileID: 3602696243659768298}
@@ -6673,6 +6673,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 6524840163264437560}
     m_Modifications:
     - target: {fileID: 1966992612869411046, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966992612869411046, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966992612869411046, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -6720,9 +6728,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5229118205892952784, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
+      propertyPath: gamble
+      value: 
+      objectReference: {fileID: 9105547045751581527}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1966992612869411046, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3387384057064077596}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e900af07e7bbf64ba0b05aa36209bfe, type: 3}
 --- !u!1 &1577939034635421189 stripped
@@ -6810,6 +6825,181 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3fa7b179d8948e48a39df1b0994e69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6063381479373767998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3821373757190330108}
+    m_Modifications:
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.characterName
+      value: Narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue2.characterName
+      value: Narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.characterName
+      value: Narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.sentences.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue2.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.sentences.Array.data[0]
+      value: "Wasn\u2019t that a good spin?\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.sentences.Array.data[1]
+      value: ' I think you got a lot more money here than from your job!
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.sentences.Array.data[2]
+      value: "I\u2019m sure we can hit it rich today!\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue1.sentences.Array.data[3]
+      value: "Let\u2019s spin again! We must gamble more\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue2.sentences.Array.data[0]
+      value: "It is a good day to gamble, don\u2019t you think?\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue2.sentences.Array.data[1]
+      value: "Let\u2019s get rid of a few more responsibilities!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[0]
+      value: "You don\u2019t have any reservations, do you?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[1]
+      value: "\u2026\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[2]
+      value: "You don\u2019t understand\u2026\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[3]
+      value: '!WE HAVE TO SPIN MORE.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[4]
+      value: '!LISTEN TO ME.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[5]
+      value: '!YOU CANNOT SHUT ME OUT.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[6]
+      value: '!WE MUST GAMBLE MORE!!! MORE!!!
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: dialogue3.sentences.Array.data[7]
+      value: PRESS G!! PRESS G!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301982396134331927, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_Name
+      value: GambleManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301982396134331927, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 437.8673
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 219.23413
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+--- !u!4 &3387384057064077596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8874081995087526946, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+  m_PrefabInstance: {fileID: 6063381479373767998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9105547045751581527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3060217524518973033, guid: c3331365e92e76845b4607075d70dc03, type: 3}
+  m_PrefabInstance: {fileID: 6063381479373767998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e960685dc077d6f45ae15ce264eef315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6336199443740143700

@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         aus = GetComponents<AudioSource>();
+
     }
 
     public void StartDialogueWithoutNarrator(Dialogue dialogue)

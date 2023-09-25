@@ -40,7 +40,6 @@ public class Room : MonoBehaviour
             numRoomsTillSlot = Random.Range(3, 5);
             numRoomsTillNote = Random.Range(6, 8);
             Setup(-1); 
-            //SetupNotesList();
         }
     }
 
@@ -78,6 +77,8 @@ public class Room : MonoBehaviour
                 while (!whichNotesChosen.Add(random)) {
                     random = Random.Range(0, notes.Length);
                 }
+            } else {
+                whichNotesChosen.Clear();
             }
             notes[random].gameObject.SetActive(true);
             numRoomsTillNote = Random.Range(6, 8);
@@ -107,7 +108,7 @@ public class Room : MonoBehaviour
         
     }
 
-    private static void IncreaseSpawns() {
+    public static void IncreaseSpawns() {
         minEnemies += 2;
         maxEnemies += 2;
     }
