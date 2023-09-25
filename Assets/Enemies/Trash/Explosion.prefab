@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 2
   explosiveDmg: 200
-  explosiveKnockback: 1000
+  explosiveKnockback: 500
 --- !u!212 &7272618277291073187
 SpriteRenderer:
   m_ObjectHideFlags: 0

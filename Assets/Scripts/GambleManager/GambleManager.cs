@@ -65,7 +65,6 @@ public class GambleManager : MonoBehaviour
         dialogues[0] = dialogue1;
         dialogues[1] = dialogue2;
         dialogues[2] = dialogue3;
-
     }
 
     // Update is called once per frame
@@ -167,6 +166,19 @@ public class GambleManager : MonoBehaviour
     public void bringInSlots() {
         StopAllCoroutines();
         gambleSounds();
+        Vector3 slotsPos = gambleScreen.localPosition;
+        gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
+
+        gambleAudioSource = GetComponent<AudioSource>();
+        bringInSlots();
+
+        Vector3 titlePos = titleScreen.localPosition;
+        titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
+
+        dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        dialogues[0] = dialogue1;
+        dialogues[1] = dialogue2;
+        dialogues[2] = dialogue3;
         StartCoroutine(GamblePanelEnters());
         
     }

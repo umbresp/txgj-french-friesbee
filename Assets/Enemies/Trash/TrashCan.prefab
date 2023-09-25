@@ -133,6 +133,7 @@ MonoBehaviour:
   gold: {fileID: 5547521965684627478, guid: 1761f70953681b7429463fe71d8de38d, type: 3}
   activate: 0
   ow: 0
+  noEXP: 0
 --- !u!114 &5604409067138521803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14443b2be6814434182beb3d7c2198d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  damage: 5
+  health: 20
+  damage: 15
 --- !u!114 &272971200458449878
 MonoBehaviour:
   m_ObjectHideFlags: 0

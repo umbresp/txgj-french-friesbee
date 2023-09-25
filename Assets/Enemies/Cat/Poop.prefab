@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballSpeed: 10
-  damage: 2
+  damage: 10
 --- !u!50 &185418871703303534
 Rigidbody2D:
   serializedVersion: 4

@@ -13,7 +13,6 @@ public class Notes : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        
     }
 
     // Update is called once per frame
