@@ -43,8 +43,10 @@ public class Quit : MonoBehaviour
         {
             currentMovementTime += Time.deltaTime;
             screenshot.transform.localPosition = Vector3.Lerp(origin, destination, currentMovementTime / totalMovementTime);
+            if (Vector3.Distance(screenshot.transform.localPosition, destination) <= 0) SceneManager.LoadScene("RoomTest2");
             yield return null;
         }
+        Debug.Log("hello here");
         SceneManager.LoadScene("RoomTest2");
     }
 
