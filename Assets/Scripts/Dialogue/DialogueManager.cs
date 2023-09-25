@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueCanvas;
     [SerializeField]
     public GameObject dialogueCharacter;
+
+    public Image screen;
+
 
     private Queue<string> sentences;
     private bool isTyping;
@@ -150,7 +154,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        dialogueCanvas.SetActive(false);
+        
         if (!SettingsManager.gambleToggled && !SettingsManager.narratorToggled)
         {
             SettingsManager.gambleToggled = true;
@@ -158,10 +162,25 @@ public class DialogueManager : MonoBehaviour
             Room.RestartStatics();
             Enemy.healthMultiplier = 1f;
             EnemyBehavior.speedMultiplier = 1f;
-            Player.move = true;
-            SceneManager.LoadScene("MainMenu");
+            screen.gameObject.SetActive(true);
+            StartCoroutine("Bam");
+        } else {
+            dialogueCanvas.SetActive(false);
+            Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
         }
-        Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
+    }
+
+    private IEnumerator Bam() {
+        for (float i = 0; i < 1; i += 0.01f) {
+            Color tmp = screen.color;
+            tmp.a = i;
+            screen.color = tmp;
+            yield return new WaitForSeconds(0.025f);
+        }
+        yield return new WaitForSeconds(1f);
+        Player.move = true;
+        SceneManager.LoadScene("MainMenu");
+
     }
 
 }
