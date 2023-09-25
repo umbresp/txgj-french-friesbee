@@ -156,6 +156,8 @@ public class DialogueManager : MonoBehaviour
             SettingsManager.gambleToggled = true;
             SettingsManager.narratorToggled = true;
             Room.RoomNum = 0;
+            Room.minEnemies = 1;
+            Room.maxEnemies = 3;
             SceneManager.LoadScene("MainMenu");
         }
         Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
