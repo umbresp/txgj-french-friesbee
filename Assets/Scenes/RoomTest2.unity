@@ -2769,6 +2769,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 99422382414801705, guid: 3f09bed7195aaf246972ce752aa6d7b6, type: 3}
+      propertyPath: coins
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 99422382414801705, guid: 3f09bed7195aaf246972ce752aa6d7b6, type: 3}
       propertyPath: coinCounter
       value: 
       objectReference: {fileID: 540446073}
