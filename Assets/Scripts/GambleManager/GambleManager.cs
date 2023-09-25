@@ -37,7 +37,7 @@ public class GambleManager : MonoBehaviour
     [SerializeField] AudioClip[] sounds;
     AudioSource gambleAudioSource;
 
-    private int maxGambles = -1;
+    private int maxGambles = 2;
     private int gambles = 0;
 
     void Start()
@@ -66,9 +66,9 @@ public class GambleManager : MonoBehaviour
             ready = false;
             gambles++;
             if (gambles == maxGambles) {
-                //timeGambles++;
-                //dialoguer.StartDialogue(dialogues[timeGambles]);
-                //gameObject.SetActive(false);
+                timeGambles++;
+                dialoguer.StartDialogue(dialogues[timeGambles]);
+                gameObject.SetActive(false);
             } else { 
                 StartCoroutine(Gamble());
             }
@@ -136,19 +136,19 @@ public class GambleManager : MonoBehaviour
     public void bringInSlots() {
         StopAllCoroutines();
         gambleSounds();
-        Vector3 slotsPos = gambleScreen.localPosition;
-        gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
+        //Vector3 slotsPos = gambleScreen.localPosition;
+        //gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
 
-        gambleAudioSource = GetComponent<AudioSource>();
-        bringInSlots();
+        //gambleAudioSource = GetComponent<AudioSource>();
+        //bringInSlots();
 
-        Vector3 titlePos = titleScreen.localPosition;
-        titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
+        //Vector3 titlePos = titleScreen.localPosition;
+        //titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
 
-        dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        dialogues[0] = dialogue1;
-        dialogues[1] = dialogue2;
-        dialogues[2] = dialogue3;
+        //dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        //dialogues[0] = dialogue1;
+        //dialogues[1] = dialogue2;
+        //dialogues[2] = dialogue3;
         StartCoroutine(GamblePanelEnters());
         
     }
