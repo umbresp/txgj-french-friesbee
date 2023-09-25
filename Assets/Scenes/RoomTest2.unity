@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1648351781110578554, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: moveSpeed
-      value: 4.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1648351781110578554, guid: 787691b2d80b74445a9b5ade89d7f557, type: 3}
       propertyPath: gameController
