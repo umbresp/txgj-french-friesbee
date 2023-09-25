@@ -153,6 +153,9 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.SetActive(false);
         if (!SettingsManager.gambleToggled && !SettingsManager.narratorToggled)
         {
+            SettingsManager.gambleToggled = true;
+            SettingsManager.narratorToggled = true;
+            Room.RoomNum = 0;
             SceneManager.LoadScene("MainMenu");
         }
         Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
