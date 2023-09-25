@@ -37,7 +37,7 @@ public class GambleManager : MonoBehaviour
     [SerializeField] AudioClip[] sounds;
     AudioSource gambleAudioSource;
 
-    private int maxGambles = 2;
+    private int maxGambles = -1;
     private int gambles = 0;
 
     void Start()
@@ -67,9 +67,9 @@ public class GambleManager : MonoBehaviour
             ready = false;
             gambles++;
             if (gambles == maxGambles) {
-                timeGambles++;
-                dialoguer.StartDialogue(dialogues[timeGambles]);
-                gameObject.SetActive(false);
+                //timeGambles++;
+                //dialoguer.StartDialogue(dialogues[timeGambles]);
+                //gameObject.SetActive(false);
             } else { 
                 StartCoroutine(Gamble());
             }
