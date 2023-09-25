@@ -9,8 +9,8 @@ public class SettingsManager : MonoBehaviour
     public Slider narratorSlider;
     public RectTransform settingsPanel;
 
-    public bool gambleToggled = true;
-    public bool narratorToggled = true;
+    public static bool gambleToggled = true;
+    public static bool narratorToggled = true;
 
     private bool setttingsArrive = false;
     private bool settingsReady = false;

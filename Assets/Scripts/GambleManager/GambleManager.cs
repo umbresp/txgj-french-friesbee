@@ -18,13 +18,13 @@ public class GambleManager : MonoBehaviour
 
     private bool freeSpin;
     
-    private static int[] slot0 = new int[3] {0, 10, 16};    //enemy speed
-    private static int[] slot1 = new int[3] {3, 11, 17};    //enemy count
-    private static int[] slot2 = new int[3] {4, 14, 18};    //enemy health
-    private static int[] slot3 = new int[3] {1, 8, 12};     //shot size
-    private static int[] slot4 = new int[3] {5, 7, 19};     //shot life
-    private static int[] slot5 = new int[3] {6, 13, 20};    //shot damage
-    private static int[] slot6 = new int[3] {2, 9, 15};     //fire rate
+    private static int[] slot0 = new int[3] {0, 0, 0};    //enemy speed
+    private static int[] slot1 = new int[3] {5, 5, 5};    //enemy count
+    private static int[] slot2 = new int[3] {12, 12, 12};    //enemy health
+    private static int[] slot3 = new int[3] {4, 4, 4};     //shot size
+    private static int[] slot4 = new int[3] {9, 9, 9};     //shot life
+    private static int[] slot5 = new int[3] {10, 10, 10};    //shot damage
+    private static int[] slot6 = new int[3] {7, 7, 7};     //fire rate
     
     private static int[][] key = new int[][] {slot0, slot1, slot2, slot3, slot4, slot5, slot6};
     [SerializeField] AudioClip[] sounds;
@@ -62,8 +62,8 @@ public class GambleManager : MonoBehaviour
         slotMachine2.spinning = true;
         slotMachine3.spinning = true;
 
-        // int outcome = Random.Range(0, 7);
-        int outcome = 0;
+         int outcome = Random.Range(0, 7);
+        //int outcome = 1;
         Debug.Log(outcome);
         StartCoroutine(slotMachine1.SpinTo(key[outcome][0]));
 
@@ -137,7 +137,7 @@ public class GambleManager : MonoBehaviour
     }
     void gambleSounds()
     {
-        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
-        gambleAudioSource.PlayOneShot(clip);
+        //AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        //gambleAudioSource.PlayOneShot(clip);
     }
 }

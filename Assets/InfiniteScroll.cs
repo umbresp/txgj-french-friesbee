@@ -37,7 +37,7 @@ public class InfiniteScroll : MonoBehaviour
     void SnapTo(int targetIndex)
     {
         scrollRect.velocity = Vector3.zero;
-        contentPanelTransform.localPosition = new Vector3(contentPanelTransform.localPosition.x, startingY + (260 * targetIndex) - 260, contentPanelTransform.localPosition.z);
+        contentPanelTransform.localPosition = new Vector3(contentPanelTransform.localPosition.x, startingY + (260 * ((ItemList.Length ) - targetIndex)) - 260, contentPanelTransform.localPosition.z);
         // contentPanelTransform.localPosition = new Vector3(contentPanelTransform.localPosition.x, startingY, contentPanelTransform.localPosition.z);
 
         // StartCoroutine(ArriveToTarget(targetIndex));

@@ -21,7 +21,7 @@ public class Keybinds : MonoBehaviour
         left.text = keys["Left"].ToString();
         right.text = keys["Right"].ToString();
         gamble.text = keys["Gamble"].ToString();
-        Debug.Log(settings.gambleToggled);
+        Debug.Log(SettingsManager.gambleToggled);
     }
 
     // Update is called once per frame
@@ -33,6 +33,6 @@ public class Keybinds : MonoBehaviour
     public void GambleKeybindClick()
     {
         settings.toggleGambleSetting();
-        gamble.text = settings.gambleToggled ? keys["Gamble"].ToString() : "None";
+        gamble.text = SettingsManager.gambleToggled ? keys["Gamble"].ToString() : "None";
     }
 }
