@@ -113,6 +113,13 @@ public class Room : MonoBehaviour
         maxEnemies += 2;
     }
 
+    public static void RestartStatics() {
+        minEnemies = 1;
+        maxEnemies = 4;
+        RoomNum = 0;
+        numRoomsTillNote = -1;
+        numRoomsTillSlot = -1;
+    }
 
     private void DecideSpawns() {
         float percentage;

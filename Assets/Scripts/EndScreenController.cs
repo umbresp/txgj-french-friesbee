@@ -23,6 +23,7 @@ public class EndScreenController : MonoBehaviour
     {
         if (dialogueStarted && Player.move)
         {
+
             SceneManager.LoadScene("RoomTest2");
         }
     }

@@ -155,12 +155,15 @@ public class DialogueManager : MonoBehaviour
         {
             SettingsManager.gambleToggled = true;
             SettingsManager.narratorToggled = true;
-            Room.RoomNum = 0;
-            Room.minEnemies = 1;
-            Room.maxEnemies = 3;
+            Room.RestartStatics();
+            Enemy.healthMultiplier = 1f;
+            EnemyBehavior.speedMultiplier = 1f;
+            Player.move = true;
             SceneManager.LoadScene("MainMenu");
         }
         Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
     }
 
 }
+
+
