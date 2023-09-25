@@ -24,6 +24,7 @@ public class Notes : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!SettingsManager.gambleToggled) { return; }
         if (cd >= 0 || !collision.gameObject.CompareTag("Player")) { return; }
         manager.StartDialogueWithoutNarrator(dialogue);
         Player.move = false;

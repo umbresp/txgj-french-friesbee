@@ -21,6 +21,7 @@ public class VendingMachine : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!SettingsManager.gambleToggled) { return;}
         if (cd >= 0 || !collision.gameObject.CompareTag("Player")) { return; }
         //cancel player movement
         Debug.Log("Machine");
