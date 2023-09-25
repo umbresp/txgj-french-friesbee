@@ -41,6 +41,7 @@ public class GambleManager : MonoBehaviour
     AudioSource gambleAudioSource;
 
     private int maxGambles = -3;
+
     private int gambles = 0;
 
     private Vector3 panelStartPos;
@@ -80,6 +81,7 @@ public class GambleManager : MonoBehaviour
                 // timeGambles++;
                 // dialoguer.StartDialogue(dialogues[timeGambles]);
                 // gameObject.SetActive(false);
+
             } else { 
                 StartCoroutine(Gamble());
             }
@@ -166,19 +168,19 @@ public class GambleManager : MonoBehaviour
     public void bringInSlots() {
         StopAllCoroutines();
         gambleSounds();
-        Vector3 slotsPos = gambleScreen.localPosition;
-        gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
+        //Vector3 slotsPos = gambleScreen.localPosition;
+        //gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
 
-        gambleAudioSource = GetComponent<AudioSource>();
-        bringInSlots();
+        //gambleAudioSource = GetComponent<AudioSource>();
+        //bringInSlots();
 
-        Vector3 titlePos = titleScreen.localPosition;
-        titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
+        //Vector3 titlePos = titleScreen.localPosition;
+        //titleScreen.localPosition = new Vector3(titlePos.x, -700, titlePos.z);
 
-        dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        dialogues[0] = dialogue1;
-        dialogues[1] = dialogue2;
-        dialogues[2] = dialogue3;
+        //dialoguer = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        //dialogues[0] = dialogue1;
+        //dialogues[1] = dialogue2;
+        //dialogues[2] = dialogue3;
         StartCoroutine(GamblePanelEnters());
         
     }
