@@ -26,7 +26,7 @@ public class Notes : MonoBehaviour
     {
         if (!SettingsManager.gambleToggled) { return; }
         if (cd >= 0 || !collision.gameObject.CompareTag("Player")) { return; }
-        manager.StartDialogue(dialogue);
+        manager.StartDialogueWithoutNarrator(dialogue);
         Player.move = false;
 
     }
