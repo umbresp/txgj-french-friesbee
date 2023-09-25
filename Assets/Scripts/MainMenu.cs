@@ -39,12 +39,14 @@ public class Quit : MonoBehaviour
     {
         float totalMovementTime = 1f; //the amount of time you want the movement to take
         float currentMovementTime = 0f;//The amount of time that has passed
-        while (Vector3.Distance(screenshot.transform.localPosition, destination) > 0)
+        while (Vector3.Distance(screenshot.transform.localPosition, destination) > 0.1f)
         {
             currentMovementTime += Time.deltaTime;
             screenshot.transform.localPosition = Vector3.Lerp(origin, destination, currentMovementTime / totalMovementTime);
+            if (Vector3.Distance(screenshot.transform.localPosition, destination) <= 0) SceneManager.LoadScene("RoomTest2");
             yield return null;
         }
+        Debug.Log("hello here");
         SceneManager.LoadScene("RoomTest2");
     }
 
