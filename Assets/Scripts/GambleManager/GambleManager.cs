@@ -230,6 +230,7 @@ public class GambleManager : MonoBehaviour
     public void closeGamble() {
         gameObject.SetActive(false);
         ready = false;
+        dialoguer.StartDialogue(dialogues[timeGambles++]);
         StartCoroutine(GamblePanelExits());
         StartCoroutine(TitlePanelExits());
     }
