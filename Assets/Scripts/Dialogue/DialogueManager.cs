@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -150,6 +151,10 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+        if (!SettingsManager.gambleToggled && !SettingsManager.narratorToggled)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         Player.move = true; //bro LOL if this causes problems in the future im sorry - kenneth
     }
 

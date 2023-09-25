@@ -321,7 +321,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
   m_PrefabInstance: {fileID: 1810214997}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053736074}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc99b26d958e2b9478576385a88a9da4, type: 3}
@@ -2268,11 +2268,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017947862}
   m_CullTransparentMesh: 1
---- !u!1 &1053736074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4720202154449842634, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
-  m_PrefabInstance: {fileID: 1810214997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137817736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,13 +3732,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1053736074}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 43238723}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: setNarratorVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3783,7 +3778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
       propertyPath: bothDialogue.sentences.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
       propertyPath: gambleDialogue.sentences.Array.size
@@ -3817,6 +3812,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
       propertyPath: bothDialogue.sentences.Array.data[2]
+      value: You won!
+      objectReference: {fileID: 0}
+    - target: {fileID: 530369380979295559, guid: cd8c103ecb670094e92e2e49cc8426da, type: 3}
+      propertyPath: bothDialogue.sentences.Array.data[3]
       value: 'Time to head home.
 
 '
