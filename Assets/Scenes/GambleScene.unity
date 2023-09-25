@@ -757,7 +757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dd12cdf1b2375584aad61d1576385c9b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9c4f5f7c97df6b4428875b8e59b50aac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3067,6 +3067,8 @@ MonoBehaviour:
   slotMachine1: {fileID: 1942420472}
   slotMachine2: {fileID: 1695115576}
   slotMachine3: {fileID: 978501682}
+  sounds:
+  - {fileID: 8300000, guid: a211a632b6fe13e4e942228033925f78, type: 3}
 --- !u!4 &2065586316
 Transform:
   m_ObjectHideFlags: 0
@@ -3139,7 +3141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 979300cb5c6bdc94a990d4182edbd02c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

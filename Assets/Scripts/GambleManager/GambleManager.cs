@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GambleManager : MonoBehaviour
 {
+    public PlayerSlash player;
     public RectTransform gambleScreen;
     public RectTransform titleScreen;
     public CoinCount gameManager;
@@ -89,7 +90,26 @@ public class GambleManager : MonoBehaviour
     }
 
     public void rewardStats(int statNumber) {
-
+        if (statNumber == 0) {
+            //enemy speed
+            EnemyBehavior.IncreaseSpeed();
+        } else if (statNumber == 1) {
+            //enemy count
+            Room.IncreaseSpawns();
+        } else if (statNumber == 2) {
+            Enemy.IncreaseHealth();
+            //enemy health
+        } else if (statNumber == 3) {
+            player.attackSizeUp();
+        } else if (statNumber == 4) {
+            player.attackTimeUp();
+        } else if (statNumber == 5) {
+            player.damageUp();
+        } else if (statNumber == 6) {
+            player.attackSpeedUp();
+        } else {
+            player.attackSpeedUp();
+        }
     }
 
     public void bringInSlots() {
