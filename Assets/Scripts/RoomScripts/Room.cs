@@ -107,7 +107,7 @@ public class Room : MonoBehaviour
         
     }
 
-    private static void IncreaseSpawns() {
+    public static void IncreaseSpawns() {
         minEnemies += 2;
         maxEnemies += 2;
     }
