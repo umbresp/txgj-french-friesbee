@@ -38,7 +38,7 @@ public class Room : MonoBehaviour
             maxEnemies = 4;
             whichNotesChosen = new HashSet<int>();
             numRoomsTillSlot = Random.Range(3, 5);
-            numRoomsTillNote = Random.Range(6, 8);
+            numRoomsTillNote = Random.Range(3, 6);
             Setup(-1); 
         }
     }
@@ -81,7 +81,7 @@ public class Room : MonoBehaviour
                 whichNotesChosen.Clear();
             }
             notes[random].gameObject.SetActive(true);
-            numRoomsTillNote = Random.Range(6, 8);
+            numRoomsTillNote = Random.Range(3, 6);
             return;
         }
 
@@ -172,8 +172,6 @@ public class Room : MonoBehaviour
                 if (notAllowed) {
                     continue;
                 }
-
-
 
                 GameObject e = Instantiate(enemy, pos, Quaternion.identity, transform);
                 e.GetComponent<EnemyBehavior>().letTheRoomKnow += EnemyDown;
