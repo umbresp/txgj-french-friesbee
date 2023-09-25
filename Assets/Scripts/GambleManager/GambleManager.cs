@@ -10,6 +10,9 @@ public class GambleManager : MonoBehaviour
     public CoinCount gameManager;
     public DialogueManager dialoguer;
 
+    public TMPro.TextMeshProUGUI coinCounter;
+    public TMPro.TextMeshProUGUI upgrade;
+
     private Dialogue[] dialogues = new Dialogue[3];
     public Dialogue dialogue1;
     public Dialogue dialogue2;
@@ -37,11 +40,17 @@ public class GambleManager : MonoBehaviour
     [SerializeField] AudioClip[] sounds;
     AudioSource gambleAudioSource;
 
-    private int maxGambles = -1;
+    private int maxGambles = -3;
     private int gambles = 0;
+
+    private Vector3 panelStartPos;
+    private Vector3 logoStartPos;
 
     void Start()
     {
+        panelStartPos = gambleScreen.localPosition;
+        logoStartPos = titleScreen.localPosition;
+        coinCounter.text = gameManager.coins.ToString();
         freeSpin = true;
         Vector3 slotsPos = gambleScreen.localPosition;
         gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
@@ -62,14 +71,16 @@ public class GambleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ready && Input.GetKeyUp(KeyCode.G)) {
+        if (ready && Input.GetKeyUp(KeyCode.G) && gameManager.coins > 30) {
+            gameManager.loseCoins(30f);
+            coinCounter.text = gameManager.coins.ToString();
             Debug.Log("Gamble!");
             ready = false;
             gambles++;
             if (gambles == maxGambles) {
-                //timeGambles++;
-                //dialoguer.StartDialogue(dialogues[timeGambles]);
-                //gameObject.SetActive(false);
+                // timeGambles++;
+                // dialoguer.StartDialogue(dialogues[timeGambles]);
+                // gameObject.SetActive(false);
             } else { 
                 StartCoroutine(Gamble());
             }
@@ -77,8 +88,6 @@ public class GambleManager : MonoBehaviour
     }
 
     IEnumerator Gamble() {
-
-        
         // Level pull
         // Update background
         slotMachine1.spinning = true;
@@ -112,26 +121,47 @@ public class GambleManager : MonoBehaviour
     }
 
     public void rewardStats(int statNumber) {
+        string text;
         if (statNumber == 0) {
             //enemy speed
             EnemyBehavior.IncreaseSpeed();
+            text = "Faster Enemies!";
         } else if (statNumber == 1) {
             //enemy count
             Room.IncreaseSpawns();
+            text = "More Enemies!";
         } else if (statNumber == 2) {
             Enemy.IncreaseHealth();
+            text = "Stronger Enemies!";
             //enemy health
         } else if (statNumber == 3) {
             player.attackSizeUp();
+            text = "Attack Size!";
         } else if (statNumber == 4) {
             player.attackTimeUp();
+            text = "Attack Time!";
         } else if (statNumber == 5) {
             player.damageUp();
+            text = "Damage Up!";
         } else if (statNumber == 6) {
             player.attackSpeedUp();
+            text = "Fire Rate Up!";
         } else {
             player.attackSpeedUp();
+            text = "Fire Rate Up";
         }
+        StartCoroutine(Upgrade(text));
+    }
+
+    IEnumerator Upgrade(string text) {
+        upgrade.text = text;
+        upgrade.gameObject.SetActive(true);
+        float time = 0.5f;
+        while (time > 0.0f) {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        upgrade.gameObject.SetActive(false);
     }
 
     public void bringInSlots() {
@@ -181,5 +211,46 @@ public class GambleManager : MonoBehaviour
     {
         //AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
         //gambleAudioSource.PlayOneShot(clip);
+    }
+
+    public void closeGamble() {
+        gameObject.SetActive(false);
+        ready = false;
+        StartCoroutine(GamblePanelExits());
+        StartCoroutine(TitlePanelExits());
+    }
+
+    private bool titleExit = false;
+    private bool panelExit = false;
+    IEnumerator GamblePanelExits() {
+        while (Vector3.Distance(gambleScreen.localPosition, panelStartPos) > 5) {
+            Vector3 interpPos = Vector3.Lerp(gambleScreen.localPosition, panelStartPos, 0.025f);
+            gambleScreen.localPosition = interpPos;
+            
+            if (Vector3.Distance(gambleScreen.localPosition, panelStartPos) <= 5) {
+                gambleScreen.localPosition = panelStartPos;
+                panelExit = true;
+                if (titleExit)
+                    gameObject.SetActive(false);
+            }
+            yield return null;
+        }
+    }
+
+
+    IEnumerator TitlePanelExits() {
+        Vector3 dest = logoStartPos;
+        while (Vector3.Distance(titleScreen.localPosition, dest) > 5) {
+            Vector3 interpPos = Vector3.Lerp(titleScreen.localPosition, dest, 0.025f);
+            titleScreen.localPosition = interpPos;
+
+            if (Vector3.Distance(titleScreen.localPosition, dest) <= 5) {
+                titleScreen.localPosition = dest;
+                titleExit = true;
+                if (panelExit)
+                    gameObject.SetActive(false);
+            }
+            yield return null;
+        }
     }
 }
