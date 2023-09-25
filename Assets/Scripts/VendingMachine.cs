@@ -5,6 +5,7 @@ using UnityEngine;
 public class VendingMachine : MonoBehaviour
 {
 
+    public GambleManager gamble;
     private float cd;
     private float cdMax = 3f;
     // Start is called before the first frame update
@@ -24,6 +25,8 @@ public class VendingMachine : MonoBehaviour
         if (!SettingsManager.gambleToggled) { return;}
         if (cd >= 0 || !collision.gameObject.CompareTag("Player")) { return; }
         //cancel player movement
+        gamble.gameObject.SetActive(true);
+        gamble.bringInSlots();
         Debug.Log("Machine");
     }
 
