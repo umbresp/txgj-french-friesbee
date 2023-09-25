@@ -39,9 +39,7 @@ public class Room : MonoBehaviour
             whichNotesChosen = new HashSet<int>();
             numRoomsTillSlot = Random.Range(3, 5);
             numRoomsTillNote = Random.Range(6, 8);
-            numRoomsTillSlot = 1;
             Setup(-1); 
-            //SetupNotesList();
         }
     }
 
@@ -79,6 +77,8 @@ public class Room : MonoBehaviour
                 while (!whichNotesChosen.Add(random)) {
                     random = Random.Range(0, notes.Length);
                 }
+            } else {
+                whichNotesChosen.Clear();
             }
             notes[random].gameObject.SetActive(true);
             numRoomsTillNote = Random.Range(6, 8);
