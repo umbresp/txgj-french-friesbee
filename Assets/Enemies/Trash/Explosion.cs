@@ -8,6 +8,8 @@ public class Explosion : MonoBehaviour
     public float lifeTime = 2f;
     public float explosiveDmg = 200f;
     public float explosiveKnockback = 3000f;
+    [SerializeField] AudioClip[] sounds;
+    AudioSource expAudioSource;
 
     private GameObject player;
     //might do the hashset thing
@@ -16,6 +18,9 @@ public class Explosion : MonoBehaviour
     private Collider2D coll;
     void Start()
     {
+        expAudioSource = GetComponent<AudioSource>();
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        expAudioSource.PlayOneShot(clip);
         coll = GetComponent<Collider2D>();
         explodedOn = new HashSet<GameObject>();
     }

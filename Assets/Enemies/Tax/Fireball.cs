@@ -8,11 +8,16 @@ public class Fireball : MonoBehaviour
     public float damage = 2f;
     private Player player; //LOL
     private Rigidbody2D rb;
+    [SerializeField] AudioClip[] sounds;
+    AudioSource fbAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        fbAudioSource = GetComponent<AudioSource>();
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        fbAudioSource.PlayOneShot(clip);
     }
 
     public void SetPlayer(Player p) {
