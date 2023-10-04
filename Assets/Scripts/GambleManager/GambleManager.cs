@@ -39,6 +39,8 @@ public class GambleManager : MonoBehaviour
     private static int[][] key = new int[][] {slot0, slot1, slot2, slot3, slot4, slot5, slot6};
     [SerializeField] AudioClip[] sounds;
     AudioSource gambleAudioSource;
+    [SerializeField] AudioClip[] sounds2;
+    AudioSource SlotAudioSource;
 
     private int maxGambles = -3;
 
@@ -57,6 +59,7 @@ public class GambleManager : MonoBehaviour
         gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
 
         gambleAudioSource = GetComponent<AudioSource>();
+        SlotAudioSource = GetComponent<AudioSource>();
         bringInSlots();
 
         Vector3 titlePos = titleScreen.localPosition;
@@ -73,6 +76,7 @@ public class GambleManager : MonoBehaviour
     {
         if (ready && Input.GetKeyUp(KeyCode.G) && gameManager.coins > 30) {
             gameManager.loseCoins(30f);
+            slotSounds();
             coinCounter.text = gameManager.coins.ToString();
             Debug.Log("Gamble!");
             ready = false;
@@ -82,7 +86,8 @@ public class GambleManager : MonoBehaviour
                 // dialoguer.StartDialogue(dialogues[timeGambles]);
                 // gameObject.SetActive(false);
 
-            } else { 
+            } else {
+                
                 StartCoroutine(Gamble());
             }
         }
@@ -94,10 +99,11 @@ public class GambleManager : MonoBehaviour
         slotMachine1.spinning = true;
         slotMachine2.spinning = true;
         slotMachine3.spinning = true;
-
-         int outcome = Random.Range(0, 7);
+        
+        int outcome = Random.Range(0, 7);
         //int outcome = 1;
         Debug.Log(outcome);
+        
         StartCoroutine(slotMachine1.SpinTo(key[outcome][0]));
 
         float timer = 0.5f;
@@ -167,7 +173,7 @@ public class GambleManager : MonoBehaviour
 
     public void bringInSlots() {
         StopAllCoroutines();
-        gambleSounds();
+        
         //Vector3 slotsPos = gambleScreen.localPosition;
         //gambleScreen.localPosition = new Vector3(slotsPos.x, 1080, slotsPos.z);
 
@@ -186,7 +192,7 @@ public class GambleManager : MonoBehaviour
     }
 
     IEnumerator GamblePanelEnters() {
-
+       
         while (Vector3.Distance(gambleScreen.localPosition, Vector3.zero) > 5) {
             Vector3 interpPos = Vector3.Lerp(gambleScreen.localPosition, Vector3.zero, 0.025f);
             gambleScreen.localPosition = interpPos;
@@ -216,15 +222,22 @@ public class GambleManager : MonoBehaviour
 
             if (Vector3.Distance(titleScreen.localPosition, dest) <= 5) {
                 titleScreen.localPosition = dest;
+                
             }
             yield return null;
         }
+        gambleSounds();
         ready = true;
     }
     void gambleSounds()
     {
-        //AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
-        //gambleAudioSource.PlayOneShot(clip);
+        AudioClip clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+        gambleAudioSource.PlayOneShot(clip);
+    }
+    void slotSounds()
+    {
+        AudioClip clip = sounds2[UnityEngine.Random.Range(0, sounds.Length)];
+        SlotAudioSource.PlayOneShot(clip);
     }
 
     public void closeGamble() {
